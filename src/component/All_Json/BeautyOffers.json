@@ -1,0 +1,275 @@
+{
+    "categories": [
+      {
+        "categoryId": 1,
+        "categoryName": "Swiss beauty",
+        "subcategories": [
+          {
+            "subId": 1,
+            "name": "Cleansers",
+            "products": [
+              {
+                "productId": 101,
+                "name": "Foaming Facial Cleanser",
+                "brand": "Brand A",
+                "price": 19.99,
+                "rating": 4.5,
+                "description": "A gentle foaming cleanser that removes dirt and oil.",
+                "image": "https://cdn.pixabay.com/photo/2018/02/09/15/00/woman-3141766_960_720.jpg"
+              },
+              {
+                "productId": 102,
+                "name": "Hydrating Face Wash",
+                "brand": "Brand B",
+                "price": 24.99,
+                "rating": 4.8,
+                "description": "A hydrating face wash that leaves skin feeling fresh.",
+                "image": "https://cdn.pixabay.com/photo/2020/02/08/10/35/soap-4829708_960_720.jpg"
+              }
+            ]
+          },
+          {
+            "subId": 2,
+            "name": "Moisturizers",
+            "products": [
+              {
+                "productId": 201,
+                "name": "Ultra Moisturizing Cream",
+                "brand": "Brand C",
+                "price": 29.99,
+                "rating": 4.7,
+                "description": "Deeply nourishes and hydrates skin.",
+                "image": "https://example.com/ultra-moisturizing-cream.jpg"
+              },
+              {
+                "productId": 202,
+                "name": "Lightweight Moisturizer",
+                "brand": "Brand D",
+                "price": 19.99,
+                "rating": 4.4,
+                "description": "A lightweight moisturizer perfect for daily use.",
+                "image": "https://example.com/lightweight-moisturizer.jpg"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "categoryId": 2,
+        "categoryName": "Lakme",
+        "subcategories": [
+          {
+            "subId": 1,
+            "name": "Shampoos",
+            "products": [
+              {
+                "productId": 301,
+                "name": "Revitalizing Shampoo",
+                "brand": "Brand E",
+                "price": 15.99,
+                "rating": 4.6,
+                "description": "A revitalizing shampoo that promotes hair growth.",
+                "image": "https://cdn.pixabay.com/photo/2016/07/26/16/48/cosmetics-1543276_1280.jpg"
+              },
+              {
+                "productId": 302,
+                "name": "Moisturizing Shampoo",
+                "brand": "Brand F",
+                "price": 18.99,
+                "rating": 4.7,
+                "description": "Moisturizing shampoo for dry and damaged hair.",
+                "image": "https://example.com/moisturizing-shampoo.jpg"
+              }
+            ]
+          },
+          {
+            "subId": 2,
+            "name": "Conditioners",
+            "products": [
+              {
+                "productId": 401,
+                "name": "Repairing Conditioner",
+                "brand": "Brand G",
+                "price": 22.99,
+                "rating": 4.8,
+                "description": "Repairs and strengthens hair with every use.",
+                "image": "https://example.com/repairing-conditioner.jpg"
+              },
+              {
+                "productId": 402,
+                "name": "Hydrating Conditioner",
+                "brand": "Brand H",
+                "price": 17.99,
+                "rating": 4.5,
+                "description": "Hydrates and detangles hair effortlessly.",
+                "image": "https://example.com/hydrating-conditioner.jpg"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "categoryId": 3,
+        "categoryName": "Huda Beauty",
+        "subcategories": [
+          {
+            "subId": 1,
+            "name": "Foundations",
+            "products": [
+              {
+                "productId": 501,
+                "name": "Long Wear Foundation",
+                "brand": "Brand I",
+                "price": 29.99,
+                "rating": 4.9,
+                "description": "A full-coverage foundation that lasts all day.",
+                "image": "https://cdn.pixabay.com/photo/2021/10/10/21/52/makeup-6698881_1280.jpg"
+              },
+              {
+                "productId": 502,
+                "name": "BB Cream",
+                "brand": "Brand J",
+                "price": 22.99,
+                "rating": 4.6,
+                "description": "A lightweight BB cream with SPF 30.",
+                "image": "https://example.com/bb-cream.jpg"
+              }
+            ]
+          },
+          {
+            "subId": 2,
+            "name": "Lipsticks",
+            "products": [
+              {
+                "productId": 601,
+                "name": "Matte Lipstick",
+                "brand": "Brand K",
+                "price": 18.99,
+                "rating": 4.7,
+                "description": "A matte finish lipstick in rich, bold colors.",
+                "image": "https://example.com/matte-lipstick.jpg"
+              },
+              {
+                "productId": 602,
+                "name": "Glossy Lip Balm",
+                "brand": "Brand L",
+                "price": 12.99,
+                "rating": 4.4,
+                "description": "A glossy lip balm that hydrates and adds shine.",
+                "image": "https://example.com/glossy-lip-balm.jpg"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "categoryId": 4,
+        "categoryName": "Loreal",
+        "subcategories": [
+          {
+            "subId": 1,
+            "name": "Foundations",
+            "products": [
+              {
+                "productId": 701,
+                "name": "Long Wear Foundation",
+                "brand": "Brand I",
+                "price": 29.99,
+                "rating": 4.9,
+                "description": "A full-coverage foundation that lasts all day.",
+                "image": "https://cdn.pixabay.com/photo/2019/12/23/01/16/eyeliner-4713577_1280.jpg"
+              },
+              {
+                "productId": 702,
+                "name": "BB Cream",
+                "brand": "Brand J",
+                "price": 22.99,
+                "rating": 4.6,
+                "description": "A lightweight BB cream with SPF 30.",
+                "image": "https://example.com/bb-cream.jpg"
+              }
+            ]
+          },
+          {
+            "subId": 2,
+            "name": "Lipsticks",
+            "products": [
+              {
+                "productId": 601,
+                "name": "Matte Lipstick",
+                "brand": "Brand K",
+                "price": 18.99,
+                "rating": 4.7,
+                "description": "A matte finish lipstick in rich, bold colors.",
+                "image": "https://example.com/matte-lipstick.jpg"
+              },
+              {
+                "productId": 602,
+                "name": "Glossy Lip Balm",
+                "brand": "Brand L",
+                "price": 12.99,
+                "rating": 4.4,
+                "description": "A glossy lip balm that hydrates and adds shine.",
+                "image": "https://example.com/glossy-lip-balm.jpg"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "categoryId": 5,
+        "categoryName": "Blue heaven",
+        "subcategories": [
+          {
+            "subId": 1,
+            "name": "Foundations",
+            "products": [
+              {
+                "productId": 801,
+                "name": "Long Wear Foundation",
+                "brand": "Brand I",
+                "price": 29.99,
+                "rating": 4.9,
+                "description": "A full-coverage foundation that lasts all day.",
+                "image": "https://cdn.pixabay.com/photo/2017/02/25/11/24/cosmetics-2097517_960_720.jpg"
+              },
+              {
+                "productId": 802,
+                "name": "BB Cream",
+                "brand": "Brand J",
+                "price": 22.99,
+                "rating": 4.6,
+                "description": "A lightweight BB cream with SPF 30.",
+                "image": "https://example.com/bb-cream.jpg"
+              }
+            ]
+          },
+          {
+            "subId": 2,
+            "name": "Lipsticks",
+            "products": [
+              {
+                "productId": 601,
+                "name": "Matte Lipstick",
+                "brand": "Brand K",
+                "price": 18.99,
+                "rating": 4.7,
+                "description": "A matte finish lipstick in rich, bold colors.",
+                "image": "https://example.com/matte-lipstick.jpg"
+              },
+              {
+                "productId": 602,
+                "name": "Glossy Lip Balm",
+                "brand": "Brand L",
+                "price": 12.99,
+                "rating": 4.4,
+                "description": "A glossy lip balm that hydrates and adds shine.",
+                "image": "https://example.com/glossy-lip-balm.jpg"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

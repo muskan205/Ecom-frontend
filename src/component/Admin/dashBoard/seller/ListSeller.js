@@ -1,0 +1,207 @@
+import React, { useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import { DataGrid } from "@mui/x-data-grid";
+import Admin_Dashboard from "../../Layout/layout";
+import { Typography, Button, TextField } from "@mui/material";
+import axios from "axios";
+
+export default function SellerList() {
+  const [rows, setRows] = useState([]);
+  const [editableRow, setEditableRow] = useState(null);
+  const [updatedFields, setUpdatedFields] = useState({});
+
+  useEffect(() => {
+    const fetchSellers = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3004/seller/get-all-seller"
+        );
+        if (response.status === 200) {
+          const sellers = response.data.seller.map((seller) => ({
+            id: seller.id, // Ensure this is a unique identifier
+            name: seller.username,
+            email: seller.email,
+            role: seller.role,
+          }));
+          setRows(sellers);
+        }
+      } catch (error) {
+        console.error("Error fetching sellers:", error);
+      }
+    };
+
+    fetchSellers();
+  }, []);
+
+  const handleEdit = (row) => {
+    setEditableRow(row.id); // Set the ID of the row being edited
+    setUpdatedFields({ name: row.name, email: row.email, role: row.role });
+  };
+
+  const handleUpdate = async (id) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:3004/seller/update-seller?id=${id}`,
+        updatedFields
+      );
+      if (response.status === 200) {
+        console.log("Seller updated successfully:", response.data);
+
+        
+        setRows((prevRows) =>
+          prevRows.map((row) =>
+            row.id === id ? { ...row, ...updatedFields } : row
+          )
+        );
+        setEditableRow(null); // Reset editable row
+      }
+    } catch (error) {
+      console.error("Error updating seller:", error);
+    }
+  };
+ 
+  const handleFieldChange = (field, value) => {
+    setUpdatedFields((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3004/seller/delete-seller`,
+        { data: { id } } // Send the id in the request body
+      );
+  
+      if (response.status === 200) {
+        console.log("Seller deleted successfully:", response.data);
+  
+        // Remove the deleted seller from the UI
+        setRows((prevRows) => prevRows.filter((row) => row.id !== id));
+      }
+    } catch (error) {
+      console.error("Error deleting seller:", error);
+    }
+  };
+  
+
+  const columns = [
+    {
+      field: "name",
+      headerName: "Name",
+      width: 150,
+      renderCell: (params) =>
+        editableRow === params.row.id ? (
+          <TextField
+            size="small"
+            value={updatedFields.name || ""}
+            onChange={(e) => handleFieldChange("name", e.target.value)}
+          />
+        ) : (
+          params.value
+        ),
+    },
+    {
+      field: "email",
+      headerName: "Email",
+      width: 200,
+      renderCell: (params) =>
+        editableRow === params.row.id ? (
+          <TextField
+            size="small"
+            value={updatedFields.email || ""}
+            onChange={(e) => handleFieldChange("email", e.target.value)}
+          />
+        ) : (
+          params.value
+        ),
+    },
+    {
+      field: "role",
+      headerName: "Role",
+      width: 150,
+      renderCell: (params) =>
+        editableRow === params.row.id ? (
+          <TextField
+            size="small"
+            value={updatedFields.role || ""}
+            onChange={(e) => handleFieldChange("role", e.target.value)}
+          />
+        ) : (
+          params.value
+        ),
+    },
+    {
+      field: "actions",
+      headerName: "Actions",
+      width: 300,
+      renderCell: (params) => (
+        <>
+          {editableRow === params.row.id ? (
+            <Button
+              variant="outlined"
+              color="primary"
+              size="small"
+              style={{ marginRight: 8 }}
+              onClick={() => handleUpdate(params.row.id)}
+            >
+              Update
+            </Button>
+          ) : (
+            <Button
+              variant="outlined"
+              color="primary"
+              size="small"
+              style={{ marginRight: 8 }}
+              onClick={() => handleEdit(params.row)}
+            >
+              Edit
+            </Button>
+          )}
+          <Button
+            variant="outlined"
+            color="secondary"
+            size="small"
+            onClick={() => handleDelete(params.row.id)}
+          >
+            Delete
+          </Button>
+        </>
+      ),
+    },
+  ];
+
+  return (
+    <>
+      <Admin_Dashboard />
+      <Typography
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginBottom: 2,
+          fontWeight: "500",
+          fontSize: "23px",
+        }}
+      >
+        Seller List
+      </Typography>
+      <Box
+        sx={{
+          height: 400,
+          width: "70%",
+          display: "flex",
+          justifyContent: "center",
+          margin: "0 auto",
+        }}
+      >
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          checkboxSelection
+          onSelectionModelChange={(selection) => {
+            console.log("Selected rows:", selection);
+          }}
+        />
+      </Box>
+    </>
+  );
+}

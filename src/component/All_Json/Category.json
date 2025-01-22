@@ -1,0 +1,63 @@
+[
+  {
+    "id": 1,
+    "categoryName": "Electronics",
+    "image": "https://cdn.pixabay.com/photo/2019/12/27/01/49/samsung-4721550_960_720.jpg",
+    "description": "Discover the latest in electronics, from smartphones to home appliances."
+  },
+  {
+    "id": 2,
+    "categoryName": "Fashion",
+    "image": "https://cdn.pixabay.com/photo/2023/11/20/23/06/woman-8402052_1280.jpg",
+    "description": "Explore our fashion collection with trendy clothing and accessories."
+  },
+  {
+    "id": 3,
+    "categoryName": "Home & Furniture",
+    "image": "https://cdn.pixabay.com/photo/2016/11/19/12/37/knives-1839061_960_720.jpg",
+    "description": "Upgrade your living space with stylish furniture and home decor."
+  },
+  {
+    "id": 4,
+    "categoryName": "Books",
+    "image": "https://cdn.pixabay.com/photo/2014/09/05/18/32/old-books-436498_1280.jpg",
+    "description": "Dive into the world of knowledge with our wide range of books."
+  }
+ ,
+ {
+  "id": 5,
+  "categoryName": "Sports",
+  "image": "https://cdn.pixabay.com/photo/2018/05/01/13/04/miniature-3365503_960_720.jpg",
+  "description": "Dive into the world of knowledge with our wide range of books."
+},
+{
+  "id": 6,
+  "categoryName": "Beauty",
+  "image": "https://cdn.pixabay.com/photo/2016/10/22/20/55/makeup-brushes-1761648_960_720.jpg",
+  "description": "Dive into the world of knowledge with our wide range of books."
+},
+{
+  "id": 7,
+  "categoryName": "Kids",
+  "image": "https://cdn.pixabay.com/photo/2020/06/14/19/19/girl-5299081_960_720.jpg",
+  "description": "Dive into the world of knowledge with our wide range of books."
+},
+{
+  "id": 8,
+  "categoryName": "Personal Health & Care",
+  "image": "https://cdn.pixabay.com/photo/2014/07/06/23/30/capsules-385949_960_720.jpg",
+  "description": "Dive into the world of knowledge with our wide range of books."
+},
+{
+  "id": 9,
+  "categoryName": "Toys",
+  "image": "https://cdn.pixabay.com/photo/2016/10/16/10/19/play-stone-1744790_960_720.jpg",
+  "description": "Dive into the world of knowledge with our wide range of books."
+},
+{
+  "id": 10,
+  "categoryName": "Gifts",
+  "image": "https://cdn.pixabay.com/photo/2016/11/18/15/47/card-1835447_1280.jpg",
+  "description": "Dive into the world of knowledge with our wide range of books."
+}
+]

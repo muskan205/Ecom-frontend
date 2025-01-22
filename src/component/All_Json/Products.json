@@ -1,0 +1,102 @@
+[
+  {
+    "id": "1",
+    "name": "Casual T-Shirt",
+    "category":"Mens",
+    "price": 19.99,
+    "size": "M",
+    "color": "Blue",
+    "image": "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+    "brand": "BrandX"
+  },
+  {
+    "id": "2",
+    "name": "Jeans",
+    "category":"Traditionals",
+    "price": 49.99,
+    "size": "32",
+    "color": "Black",
+    "brand": "BrandY",
+    "image": "https://cdn.pixabay.com/photo/2015/08/05/09/55/mens-shoes-875950_640.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Leather Jacket",
+    "category":"Western Wear",
+    "price": 129.99,
+    "size": "L",
+    "color": "Brown",
+    "brand": "BrandZ",
+    "image": "https://cdn.pixabay.com/photo/2015/08/05/09/55/mens-shoes-875950_640.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Summer Dress",
+    "category":"Womens",
+    "price": 34.99,
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": "https://cdn.pixabay.com/photo/2015/08/05/09/55/mens-shoes-875950_640.jpg"
+  },
+  {
+    "id": "5",
+    "name": "Summer Dress",
+    "category":"Womens",
+    "price": 34.99,
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": "https://cdn.pixabay.com/photo/2015/08/05/09/55/mens-shoes-875950_640.jpg"
+  },
+  {
+    "id": "6",
+    "name": "Summer Dress",
+    "category":"Womens",
+    "price": 34.99,
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": "https://cdn.pixabay.com/photo/2015/08/05/09/55/mens-shoes-875950_640.jpg"
+  },
+  {
+    "id": "7",
+    "name": "Summer Dress",
+    "category":"Womens",
+    "price": 34.99,
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": "https://cdn.pixabay.com/photo/2015/08/05/09/55/mens-shoes-875950_640.jpg"
+  },
+  {
+    "id": "8",
+    "name": "Summer Dress",
+    "category":"Womens",
+    "price": 34.99,
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": "https://cdn.pixabay.com/photo/2015/08/05/09/55/mens-shoes-875950_640.jpg"
+  },
+  {
+    "id": "9",
+    "name": "Summer Dress",
+    "category":"Womens",
+    "price": 34.99,
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": "https://cdn.pixabay.com/photo/2015/08/05/09/55/mens-shoes-875950_640.jpg"
+  },
+  {
+    "id": "10",
+    "name": "Summer Dress",
+    "category":"Womens",
+    "price": 34.99,
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": "https://cdn.pixabay.com/photo/2015/08/05/09/55/mens-shoes-875950_640.jpg"
+  }
+]

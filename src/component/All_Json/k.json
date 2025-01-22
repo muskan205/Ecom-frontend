@@ -1,0 +1,339 @@
+[
+    {
+        "name": "Top Wear",
+        "section": "men",
+        "sectionId": 1,
+        "subcategories": [
+            {
+                "name": "T-Shirts",
+                "subId": 1,
+                "products": [
+                    {
+                        "name": "Striped T-Shirt",
+                        "description": "Classic striped t-shirt for a casual vibe.",
+                        "price": 599.99,
+                        "brand": "Adidas",
+                        "inStock": true,
+                        "images": "https://godfrey.co.in/wp-content/uploads/2024/01/GMT2159FL-6-2.webp"
+                    },
+                    {
+                        "name": "Casual T-Shirt",
+                        "description": "Perfect for daily wear.",
+                        "price": 499.99,
+                        "brand": "Nike",
+                        "inStock": true,
+                        "images": "https://5.imimg.com/data5/SELLER/Default/2023/5/305369158/WP/JM/UV/102736043/men-casual-t-shirts-500x500.jpg"
+                    },
+                    {
+                        "name": "Graphic T-Shirt",
+                        "description": "Trendy graphic t-shirt for a cool look.",
+                        "price": 450.99,
+                        "brand": "Puma",
+                        "inStock": true,
+                        "images": "https://cdn.pixelspray.io/v2/black-bread-289bfa/woTKH5/wrkr/t.resize(h:1000,w:820)/data/Superdry/24082023img/410381099006_6.jpg"
+                    },
+                    {
+                        "name": "V-Neck T-Shirt",
+                        "description": "Stylish V-neck for casual outings.",
+                        "price": 350.5,
+                        "brand": "Reebok",
+                        "inStock": true,
+                        "images": "https://www.xtees.com/uploads/products/images/primary/red-plain-v-neck-t-shirt_1611817312.jpg"
+                    },
+                    {
+                        "name": "Round Neck T-Shirt",
+                        "description": "Simple yet classy round-neck.",
+                        "price": 400.99,
+                        "brand": "H&M",
+                        "inStock": true,
+                        "images": "https://www.xtees.com/uploads/products/images/primary/red-plain-v-neck-t-shirt_1611817312.jpg"
+                    },
+                    {
+                        "name": "Sleeveless T-Shirt",
+                        "description": "Comfortable sleeveless t-shirt.",
+                        "price": 299.99,
+                        "brand": "Zara",
+                        "inStock": true,
+                        "images": "https://m.media-amazon.com/images/I/51TgIabeeJL._AC_UL480_FMwebp_QL65_.jpg"
+                    },
+                    {
+                        "name": "Polo T-Shirt",
+                        "description": "Elegant polo for semi-casual occasions.",
+                        "price": 550.75,
+                        "brand": "Lacoste",
+                        "inStock": true,
+                        "images": "https://m.media-amazon.com/images/I/71h4Mc-MJUL.__AC_SY445_SX342_QL70_FMwebp_.jpg"
+                    },
+                    {
+                        "name": "Sporty T-Shirt",
+                        "description": "Sporty and breathable.",
+                        "price": 375.25,
+                        "brand": "Under Armour",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Cotton T-Shirt",
+                        "description": "Soft cotton fabric.",
+                        "price": 450,
+                        "brand": "Uniqlo",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Muscle Fit T-Shirt",
+                        "description": "Designed for a great fit.",
+                        "price": 325.5,
+                        "brand": "GymShark",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Henley T-Shirt",
+                        "description": "Stylish Henley for casual wear.",
+                        "price": 475,
+                        "brand": "Old Navy",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Long Sleeve T-Shirt",
+                        "description": "Perfect for light winters.",
+                        "price": 550,
+                        "brand": "Abercrombie & Fitch",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Raglan T-Shirt",
+                        "description": "Trendy raglan sleeves.",
+                        "price": 325,
+                        "brand": "American Eagle",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Basic T-Shirt",
+                        "description": "Everyday casual wear.",
+                        "price": 299.99,
+                        "brand": "Gap",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Oversized T-Shirt",
+                        "description": "Comfortable oversized t-shirt.",
+                        "price": 600,
+                        "brand": "Balenciaga",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Slub T-Shirt",
+                        "description": "Unique slub texture for a casual look.",
+                        "price": 420.5,
+                        "brand": "Levi's",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Crew Neck T-Shirt",
+                        "description": "Classic crew-neck style.",
+                        "price": 350.75,
+                        "brand": "Tommy Hilfiger",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Performance T-Shirt",
+                        "description": "Designed for sports activities.",
+                        "price": 375.25,
+                        "brand": "New Balance",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Dry Fit T-Shirt",
+                        "description": "Moisture-wicking fabric.",
+                        "price": 400.5,
+                        "brand": "Decathlon",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Tie-Dye T-Shirt",
+                        "description": "Cool tie-dye pattern.",
+                        "price": 599.99,
+                        "brand": "Urban Outfitters",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    }
+                ]
+            },
+            {
+                "name": "Shirts",
+                "subId": 2,
+                "products": [
+                    {
+                        "name": "Formal Shirt",
+                        "description": "Elegant formal shirt.",
+                        "price": 799.99,
+                        "brand": "Arrow",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Casual Shirt",
+                        "description": "Comfortable casual shirt for outings.",
+                        "price": 699.99,
+                        "brand": "U.S. Polo",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Linen Shirt",
+                        "description": "Breathable linen fabric for comfort.",
+                        "price": 850,
+                        "brand": "Zara",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Oxford Shirt",
+                        "description": "Classic oxford style for formal occasions.",
+                        "price": 950.5,
+                        "brand": "Brooks Brothers",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Flannel Shirt",
+                        "description": "Cozy flannel for cold weather.",
+                        "price": 650.25,
+                        "brand": "LL Bean",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Denim Shirt",
+                        "description": "Trendy denim look.",
+                        "price": 749.99,
+                        "brand": "Levi's",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Chambray Shirt",
+                        "description": "Lightweight and stylish.",
+                        "price": 725.5,
+                        "brand": "Gap",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Slim Fit Shirt",
+                        "description": "Modern slim fit design.",
+                        "price": 799.99,
+                        "brand": "Hugo Boss",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Button-Down Shirt",
+                        "description": "Classic button-down shirt.",
+                        "price": 700,
+                        "brand": "Banana Republic",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Printed Shirt",
+                        "description": "Trendy printed shirt.",
+                        "price": 620.5,
+                        "brand": "Jack & Jones",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Checked Shirt",
+                        "description": "Stylish checked shirt.",
+                        "price": 650,
+                        "brand": "Marks & Spencer",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Long Sleeve Shirt",
+                        "description": "Versatile long-sleeve shirt.",
+                        "price": 725.5,
+                        "brand": "Tommy Hilfiger",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    }
+                ]
+            },
+            {
+                "name": "Shorts",
+                "subId": 3,
+                "products": [
+                    {
+                        "name": "Denim Shorts",
+                        "description": "Casual and comfortable denim shorts.",
+                        "price": 599.99,
+                        "brand": "Levi's",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Chino Shorts",
+                        "description": "Stylish chino shorts.",
+                        "price": 699.99,
+                        "brand": "H&M",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Athletic Shorts",
+                        "description": "Perfect for workouts.",
+                        "price": 499.99,
+                        "brand": "Under Armour",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Cargo Shorts",
+                        "description": "Functional and stylish cargo shorts.",
+                        "price": 650.5,
+                        "brand": "American Eagle",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Bermuda Shorts",
+                        "description": "Casual Bermuda shorts.",
+                        "price": 750,
+                        "brand": "Gap",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Jogger Shorts",
+                        "description": "Comfortable jogger shorts for lounging.",
+                        "price": 450.25,
+                        "brand": "Puma",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    },
+                    {
+                        "name": "Tailored Shorts",
+                        "description": "Tailored fit shorts for smart-casual look.",
+                        "price": 800.5,
+                        "brand": "Zara",
+                        "inStock": true,
+                        "images": "https://link-to-image.com"
+                    }
+                ]
+            }
+        ]
+    }
+]

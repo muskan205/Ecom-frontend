@@ -1,0 +1,161 @@
+[
+  {
+    "id": "1",
+    "name": "Casual T-Shirt",
+    "category": "Mens",
+    "price": 19.99,
+    "description": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+    "size": "M",
+    "color": "Blue",
+    "image": [
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2013/01/09/17/56/doraemon-74473_1280.jpg",
+      "https://cdn.pixabay.com/photo/2016/08/31/14/49/doraemon-1633723_1280.jpg"
+    ],
+    "brand": "BrandX"
+  },
+  {
+    "id": "2",
+    "name": "Jeans",
+    "category": "Traditionals",
+    "price": 49.99,
+    "description": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+
+    "size": "32",
+    "color": "Black",
+    "brand": "BrandY",
+    "image": [
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg"
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Leather Jacket",
+    "category": "Western Wear",
+    "description": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+
+    "price": 129.99,
+    "size": "L",
+    "color": "Brown",
+    "brand": "BrandZ",
+    "image": [
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg"
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Summer Dress",
+    "category": "Womens",
+    "description": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+
+    "price": 34.99,
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": [
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg"
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Summer Dress",
+    "category": "Womens",
+    "description": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+
+    "price": 34.99,
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": [
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg"
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Summer Dress",
+    "category": "Womens",
+    "description": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+
+    "price": 34.99,
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": [
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg"
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Summer Dress",
+    "category": "Womens",
+    "description": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+
+    "price": 34.99,
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": [
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg"
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Summer Dress",
+    "category": "Womens",
+    "description": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+
+    "price": 34.99,
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": [
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg"
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Summer Dress",
+    "category": "Womens",
+    "description": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+
+    "price": 34.99,
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": [
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg"
+    ]
+  },
+  {
+    "id": "10",
+    "name": "Summer Dress",
+    "category": "Womens",
+    "price": 34.99,
+    "description": "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+
+    "size": "S",
+    "color": "Red",
+    "brand": "BrandA",
+    "image": [
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg",
+      "https://cdn.pixabay.com/photo/2022/09/29/03/17/baby-7486419_640.jpg"
+    ]
+  }
+]

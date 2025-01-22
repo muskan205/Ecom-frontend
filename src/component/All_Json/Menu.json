@@ -1,0 +1,66 @@
+[
+    {
+      "section": "Electronics",
+      "subcategories": [
+        {
+          "subId": 1,
+          "name": "Mobile Phones",
+          "products": [
+            { "productId": 101, "name": "iPhone 14", "price": 999 },
+            { "productId": 102, "name": "Samsung Galaxy S23", "price": 849 }
+          ]
+        },
+        {
+          "subId": 2,
+          "name": "Laptops",
+          "products": [
+            { "productId": 103, "name": "MacBook Air M2", "price": 1199 },
+            { "productId": 104, "name": "Dell XPS 13", "price": 1099 }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Fashion",
+      "subcategories": [
+        {
+          "subId": 3,
+          "name": "Men's Wear",
+          "products": [
+            { "productId": 201, "name": "Leather Jacket", "price": 150 },
+            { "productId": 202, "name": "Jeans", "price": 40 }
+          ]
+        },
+        {
+          "subId": 4,
+          "name": "Women's Wear",
+          "products": [
+            { "productId": 203, "name": "Evening Gown", "price": 120 },
+            { "productId": 204, "name": "Handbag", "price": 80 }
+          ]
+        }
+      ]
+    },
+    {
+      "section": "Home Appliances",
+      "subcategories": [
+        {
+          "subId": 5,
+          "name": "Kitchen",
+          "products": [
+            { "productId": 301, "name": "Microwave Oven", "price": 99 },
+            { "productId": 302, "name": "Blender", "price": 49 }
+          ]
+        },
+        {
+          "subId": 6,
+          "name": "Living Room",
+          "products": [
+            { "productId": 303, "name": "Smart TV", "price": 499 },
+            { "productId": 304, "name": "Air Conditioner", "price": 299 }
+          ]
+        }
+      ]
+    }
+  ]
+  

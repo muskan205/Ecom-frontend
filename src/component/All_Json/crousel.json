@@ -1,0 +1,33 @@
+[
+  {
+    "id": "1",
+    "title": "Men's Fashion Collection",
+    "description": "Explore our latest collection of men's clothing and accessories. Shop the trendiest styles and enjoy exclusive discounts.",
+    "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea"
+  },
+  {
+    "id": "2",
+    "title": "Electronics and Gadgets",
+    "description": "Discover the best deals on electronics and gadgets. From smartphones to home appliances, we’ve got you covered.",
+    "image": "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3"
+  },
+  {
+    "id": "3",
+    "title": "Home and Living Essentials",
+    "description": "Upgrade your home with our carefully curated collection of furniture, décor, and kitchenware.",
+    "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105"
+  },
+  {
+    "id": "4",
+    "title": "Sports and Outdoor Equipment",
+    "description": "Gear up for your next adventure with our wide range of sports and outdoor equipment. High-quality products at unbeatable prices.",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+  },
+  {
+    "id": "5",
+
+    "title": "Beauty and Personal Care",
+    "description": "Indulge in our premium selection of skincare, makeup, and wellness products for all your beauty needs.",
+    "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3"
+  }
+]
