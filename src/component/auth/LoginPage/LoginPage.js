@@ -13,7 +13,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
-import CommonSnackbar from '../../Toaster/SuccessToaster'
+import CommonSnackbar from "../../Toaster/SuccessToaster";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -65,7 +65,8 @@ export default function LoginPage() {
         "http://localhost:3004/api/login",
         user
       );
-      console.log(response.status);
+      console.log(response.data.role, "***********");
+      console.log("respose***********", response.data);
 
       if (response.status === 200) {
         setSnackbarState({
@@ -73,13 +74,16 @@ export default function LoginPage() {
           message: "Logged in successfully!",
           severity: "success",
         });
-
+        if (response.data.role == "admin") {
+          navigate("/admin-dashboard");
+        }
         setUser({ email: "", password: "" });
-
+        if (response.data.role == "user") {
+          setTimeout(() => {
+            navigate("/product");
+          }, 1000);
+        }
         // Delay navigation to allow snackbar to display
-        setTimeout(() => {
-          navigate("/product");
-        }, 1000);
       }
     } catch (err) {
       setSnackbarState({
