@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Box, Button, Link, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { IoMailOpenOutline } from "react-icons/io5";
-import { json, useNavigate } from "react-router";
+import {  useNavigate } from "react-router";
 import { BsArrowLeft } from "react-icons/bs";
 import CountdownTimer from "../Timer/Timer";
 import axios from "axios";
@@ -106,8 +106,6 @@ export default function VerifyOtp() {
         "http://localhost:3004/api/forgetPAssword",
         { email: storedData } // directly use the email from local storage in the request body
       );
-
-      console.log("Response Data:", response.data.message);
 
       if (response.status === 200) {
         alert("OTP sent successfully");

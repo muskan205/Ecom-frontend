@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./Navbar/Navbar";
+import Navbar from "../../common/Navbar/Navbar";
 import CaseStudyCarousel from "./Carousel";
 import { Box, Button, Typography } from "@mui/material";
 import CustomCards from "./Cards/ProductsCard";
 import SeasionalCollection from "./mainSection/ouerCollections";
 import OurProducts from "./mainSection/ourProducts";
-import Footer from "./Footer";
+import Footer from "./../../common/Footer/index";
 import BeautyCollection from "./mainSection/beautyOnOffer";
-import Bottom from "./Footer/Footer2";
+import Bottom from "./../../common/Footer/Footer2";
 import MustHave from "./Cards/mustHave";
 import { useNavigate } from "react-router";
 

@@ -1,11 +1,11 @@
 import React, { Suspense, useEffect, useState } from "react";
-import CustomCards from "../../Dashboard/Cards/ProductsCard";
-// import Product from "../../All_Json/allProducts.json";
+// import CustomCards from "../../../Dashboard/Cards/ProductsCard";
+
 import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
+
 import Product from "../../All_Json/allProducts.json";
 import { Box } from "@mui/material";
-import ProductCards from "./productsCard";
+import ProductCards from '../../../user/Dashboard/Cards/ProductsCard'
 import { useNavigate } from "react-router";
 // const Product = React.lazy(() => import("../../All_Json/allProducts.json"));
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CardMedia, Button, Box, Typography } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
-import Navbar from "../../Dashboard/Navbar/Navbar";
+import Navbar from "../../../common/Navbar/Navbar";
 import "./ProductDetails.css";
 
 export default function ProductDetails() {

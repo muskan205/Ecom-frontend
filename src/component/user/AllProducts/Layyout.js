@@ -1,15 +1,15 @@
 import React, { Suspense, useState, useEffect } from "react";
-import Navbar from "../Dashboard/Navbar/Navbar";
+import Navbar from "../../common/Navbar/Navbar";
 import FilterControls from "./filters";
 import { Box } from "@mui/material";
-import SmartFooter from "../Dashboard/Footer";
-import AllProductsCards from "./cards/Products";
+import SmartFooter from "../../common/Footer";
+import AllProductsCards from "../AllProducts/cards/Products";
 
 const OurProducts = React.lazy(() =>
   import("../Dashboard/mainSection/ourProducts")
 );
 
-function Layyout() {
+function ProductsLayout() {
   const [cartItemCount, setCartItemCount] = useState(0);
 
   // Fetch cart items from localStorage
@@ -62,4 +62,4 @@ function Layyout() {
   );
 }
 
-export default Layyout;
+export default ProductsLayout;

@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
-import caseStudies from "../../All_Json/crousel.json";
+import caseStudies from "../../../user/All_Json/crousel.json";
 
 const CarouselContainer = styled(Box)(({ theme }) => ({
   position: "relative",

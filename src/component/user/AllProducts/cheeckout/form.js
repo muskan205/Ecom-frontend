@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, TextField, Grid, Typography, Box, Paper, Checkbox, FormControlLabel } from '@mui/material';
-import Navbar from '../../Dashboard/Navbar/Navbar';
+import Navbar from '../../../common/Navbar/Navbar';
 
-export default  function() {
+export default  function CheckOut() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',

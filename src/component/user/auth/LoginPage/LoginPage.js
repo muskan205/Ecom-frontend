@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {
-  Alert,
+  
   Box,
   Button,
   IconButton,
   InputAdornment,
-  Snackbar,
+  
   TextField,
 } from "@mui/material";
 import { CgProfile } from "react-icons/cg";
@@ -13,7 +13,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
-import CommonSnackbar from "../../Toaster/SuccessToaster";
+import CommonSnackbar from "./../../..//common/Toaster/SuccessToaster";
 
 export default function LoginPage() {
   const navigate = useNavigate();

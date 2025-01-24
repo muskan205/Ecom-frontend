@@ -1,10 +1,17 @@
 import React, { useEffect, useState, useRef } from "react";
-import { AppBar, Toolbar, Typography, Box, IconButton, Badge } from "@mui/material";
-import categories from "../../All_Json/NewJson.json";
-import { BsCartCheckFill, BsPersonFillCheck } from "react-icons/bs";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Box,
+  IconButton,
+  Badge,
+} from "@mui/material";
+import categories from "../../user/All_Json/NewJson.json";
+import { BsPersonFillCheck } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import { useNavigate } from "react-router";
-import SignupModal from "../Profile/signup";
+import SignupModal from "../../user/Dashboard/Profile/signup";
 import { ShoppingBag } from "@mui/icons-material";
 
 const Navbar = ({ cartItemCount }) => {
@@ -51,7 +58,7 @@ const Navbar = ({ cartItemCount }) => {
     setUniqueCategories(uniqueSections);
   }, []);
 
-  console.log("cartItemCount---------------",cartItemCount)
+  console.log("cartItemCount---------------", cartItemCount);
 
   return (
     <Box onClick={() => setShowHoverDiv(false)}>
@@ -89,7 +96,7 @@ const Navbar = ({ cartItemCount }) => {
                   padding: "5px 10px",
                 }}
               >
-                {category.toUpperCase()}
+                {category ? category.toUpperCase() : category}
               </Typography>
             ))}
           </Box>
@@ -108,7 +115,11 @@ const Navbar = ({ cartItemCount }) => {
               onClick={() => setSignupOpen(true)}
               style={{ cursor: "pointer", color: "#4F62FE" }}
             />
-            <IconButton aria-label="cart"  style={{ cursor: "pointer", color: "#4F62FE" }} onClick={()=>navigate('/cart')}>
+            <IconButton
+              aria-label="cart"
+              style={{ cursor: "pointer", color: "#4F62FE" }}
+              onClick={() => navigate("/cart")}
+            >
               <Badge badgeContent={cartItemCount} color="primary">
                 <ShoppingBag />
               </Badge>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../../Dashboard/Navbar/Navbar";
+import Navbar from "../../../common/Navbar/Navbar";
 import { Box, Typography, Button, IconButton, Divider } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { CiFaceSmile } from "react-icons/ci";

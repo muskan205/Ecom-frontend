@@ -47,7 +47,6 @@ export default function SellerList() {
       if (response.status === 200) {
         console.log("Seller updated successfully:", response.data);
 
-        
         setRows((prevRows) =>
           prevRows.map((row) =>
             row.id === id ? { ...row, ...updatedFields } : row
@@ -59,7 +58,7 @@ export default function SellerList() {
       console.error("Error updating seller:", error);
     }
   };
- 
+
   const handleFieldChange = (field, value) => {
     setUpdatedFields((prev) => ({ ...prev, [field]: value }));
   };
@@ -70,10 +69,10 @@ export default function SellerList() {
         `http://localhost:3004/seller/delete-seller`,
         { data: { id } } // Send the id in the request body
       );
-  
+
       if (response.status === 200) {
         console.log("Seller deleted successfully:", response.data);
-  
+
         // Remove the deleted seller from the UI
         setRows((prevRows) => prevRows.filter((row) => row.id !== id));
       }
@@ -81,7 +80,6 @@ export default function SellerList() {
       console.error("Error deleting seller:", error);
     }
   };
-  
 
   const columns = [
     {
