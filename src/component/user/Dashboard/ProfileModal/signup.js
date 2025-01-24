@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   Dialog,
-  DialogActions,
   DialogContent,
   DialogTitle,
   Button,
@@ -16,7 +15,6 @@ import { useNavigate } from "react-router";
 
 const SignupModal = ({ open, onClose }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const user = {

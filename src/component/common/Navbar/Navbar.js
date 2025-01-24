@@ -11,7 +11,7 @@ import categories from "../../user/All_Json/NewJson.json";
 import { BsPersonFillCheck } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import { useNavigate } from "react-router";
-import SignupModal from "../../user/Dashboard/Profile/signup";
+import SignupModal from "../../user/Dashboard/ProfileModal/signup";
 import { ShoppingBag } from "@mui/icons-material";
 
 const Navbar = ({ cartItemCount }) => {

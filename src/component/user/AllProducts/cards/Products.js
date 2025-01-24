@@ -1,22 +1,17 @@
 import React, { Suspense, useEffect, useState } from "react";
-// import CustomCards from "../../../Dashboard/Cards/ProductsCard";
-
 import Pagination from "@mui/material/Pagination";
-
 import Product from "../../All_Json/allProducts.json";
 import { Box } from "@mui/material";
-import ProductCards from '../../../user/Dashboard/Cards/ProductsCard'
+import ProductCards from "./productsCard";
 import { useNavigate } from "react-router";
-// const Product = React.lazy(() => import("../../All_Json/allProducts.json"));
 
-function AllProductsCards({setCartItemCount}) {
+function AllProductsCards({ setCartItemCount }) {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
   const pageCount = Math.ceil(Product.length / itemsPerPage); // 4
 
-  
   const currentItems = Product.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -26,16 +21,18 @@ function AllProductsCards({setCartItemCount}) {
     setCurrentPage(value);
   };
   const handleProductClick = (item) => {
-    console.log(item)
-    localStorage.setItem("cart",item)
+    console.log(item);
+    localStorage.setItem("cart", item);
     navigate("/productDetails", { state: { product: item } });
   };
   return (
     <>
-      
-   
-        <ProductCards isProduct={true} data={currentItems} onPRoductClick={handleProductClick} setCartItemCount={setCartItemCount}/>
-     
+      <ProductCards
+        isProduct={true}
+        data={currentItems}
+        onPRoductClick={handleProductClick}
+        setCartItemCount={setCartItemCount}
+      />
 
       {/* Pagining  */}
       <Box

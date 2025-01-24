@@ -8,7 +8,6 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router";
 import { styled } from "@mui/system";
 
 const FlyToCartEffect = styled(Box)({
