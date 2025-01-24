@@ -20,6 +20,7 @@ const Navbar = ({ cartItemCount }) => {
   const [activeCategory, setActiveCategory] = useState(null);
   const navigate = useNavigate();
   const [signupOpen, setSignupOpen] = useState(false);
+  const [user, setUser] = useState([]);
 
   const categoriesDeivRef = useRef(null);
 
@@ -56,6 +57,11 @@ const Navbar = ({ cartItemCount }) => {
   useEffect(() => {
     const uniqueSections = [...new Set(categories.map((cat) => cat.section))];
     setUniqueCategories(uniqueSections);
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser)); // Parse and set the user data from localStorage
+    }
+    console.log("Logged in user", user.username);
   }, []);
 
   console.log("cartItemCount---------------", cartItemCount);
@@ -70,7 +76,11 @@ const Navbar = ({ cartItemCount }) => {
           }}
         >
           <Typography variant="h6" component="div" sx={{ flexGrow: 0 }}>
-            <img src="N_Logo.jpg" alt="Logo" style={{ width: "100px" }} />
+            <img
+              src="N_Logo.jpg"
+              alt="user.username"
+              style={{ width: "100px" }}
+            />
           </Typography>
 
           {/* Categories Box */}
@@ -110,11 +120,29 @@ const Navbar = ({ cartItemCount }) => {
               alignItems: "center",
             }}
           >
-            <BsPersonFillCheck
+            {/* <BsPersonFillCheck
               size={24}
               onClick={() => setSignupOpen(true)}
               style={{ cursor: "pointer", color: "#4F62FE" }}
-            />
+            /> */}
+
+            {user ? (
+              <>
+                <Typography
+                  variant="body1"
+                  sx={{ color: "#4F62FE", cursor: "pointer" }}
+                  onClick={() => setSignupOpen(true)}
+                >
+                  {user.username}
+                </Typography>
+              </>
+            ) : (
+              <BsPersonFillCheck
+                size={24}
+                onClick={() => setSignupOpen(true)}
+                style={{ cursor: "pointer", color: "#4F62FE" }}
+              />
+            )}
             <IconButton
               aria-label="cart"
               style={{ cursor: "pointer", color: "#4F62FE" }}

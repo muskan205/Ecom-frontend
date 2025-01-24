@@ -74,6 +74,9 @@ export default function LoginPage() {
           message: "Logged in successfully!",
           severity: "success",
         });
+
+        localStorage.setItem("user", JSON.stringify(response.data));
+
         if (response.data.role == "admin") {
           navigate("/admin-dashboard");
         }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -15,19 +15,15 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import AddCircleIcon from "@mui/icons-material/AddCircle"; // For Create
-import EditIcon from "@mui/icons-material/Edit"; // For Update
-import DeleteIcon from "@mui/icons-material/Delete"; // For Delete
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import StorefrontIcon from "@mui/icons-material/Storefront";
-import PersonIcon from "@mui/icons-material/Person";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import SettingsIcon from "@mui/icons-material/Settings";
-import ListIcon from "@mui/icons-material/List";
-import SellerCreateForm from "../dashBoard/seller/SellerForm"; // Make sure this path is correct
-import {useNavigate} from 'react-router-dom';
+
+import SellerCreateForm from "../dashBoard/seller/SellerForm";
+import { useNavigate } from "react-router-dom";
+import { Avatar, Menu, MenuItem } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -90,10 +86,13 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function Admin_Dashboard() {
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [openSellerMenu, setOpenSellerMenu] = React.useState(false);
   const [showCreateSellerForm, setShowCreateSellerForm] = React.useState(false);
+  const [user, setUser] = useState({});
+  const [anchorEl, setAnchorEl] = useState(null);
+  const isMenuOpen = Boolean(anchorEl);
+
   const navigate = useNavigate();
 
   const handleDrawerOpen = () => setOpen(true);
@@ -101,40 +100,127 @@ export default function Admin_Dashboard() {
   const toggleSellerMenu = () => setOpenSellerMenu(!openSellerMenu);
 
   const handleCreateSellerClick = () => {
-    navigate('/create-seller');
+    navigate("/create-seller");
   };
 
+  const handleListClick = () => {
+    navigate("/list-seller");
+  };
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-  const handleListClick=()=>{
-    navigate('/list-seller')
-  }
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogin = () => {
+    navigate("/login");
+    handleMenuClose();
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser({});
+    navigate("/login");
+    handleMenuClose();
+  };
+  useEffect(() => {
+    const data = localStorage.getItem("user");
+    setUser(data ? JSON.parse(data) : {});
+  }, []);
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed">
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ marginRight: 5, ...(open && { display: "none" }) }}
+      <AppBar position="fixed" sx={{}}>
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "space-between",
+          }}
+        >
+          <Toolbar
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Admin Dashboard
+            {/* Left Section*/}
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                sx={{ marginRight: 2, ...(open && { display: "none" }) }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" sx={{ marginLeft: 1 }}>
+                Admin Dashboard
+              </Typography>
+            </Box>
+
+            {/* Right Section: Close Drawer Icon */}
+            <IconButton
+              color="inherit"
+              aria-label="close drawer"
+              onClick={handleDrawerClose}
+              edge="end"
+              sx={{
+                ...(open || { display: "none" }),
+              }}
+            >
+              <ChevronLeftIcon />
+            </IconButton>
+          </Toolbar>
+
+          <Typography sx={{ marginLeft: "auto", alignSelf: "center" }}>
+            <Box sx={{ display: "flex", marginLeft: "-150px" }}>
+              {user ? (
+                <>
+                  {/* User is logged in */}
+                  <IconButton onClick={handleMenuOpen}>
+                    <Avatar>
+                      {user.username && typeof user.username === "string"
+                        ? user.username.charAt(0).toUpperCase()
+                        : ""}
+                    </Avatar>
+                  </IconButton>
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={isMenuOpen}
+                    onClose={handleMenuClose}
+                  >
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                  </Menu>
+                  <Typography sx={{ marginLeft: "2px", alignSelf: "center" }}>
+                    {user.username && typeof user.username === "string"
+                      ? user.username.charAt(0).toUpperCase() +
+                        user.username.slice(1).toLocaleLowerCase()
+                      : ""}
+                  </Typography>
+                </>
+              ) : (
+                <>
+                  {/* No user is logged in */}
+                  <IconButton onClick={handleMenuOpen}>
+                    <Avatar src="/broken-image.jpg" />
+                  </IconButton>
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={isMenuOpen}
+                    onClose={handleMenuClose}
+                  >
+                    <MenuItem onClick={handleLogin}>Login</MenuItem>
+                  </Menu>
+                </>
+              )}
+            </Box>
           </Typography>
-          <IconButton
-            color="inherit"
-            aria-label="close drawer"
-            onClick={handleDrawerClose}
-            edge="end"
-            sx={{ marginLeft: "-194px", ...(open || { display: "none" }) }}
-          >
-            <ChevronLeftIcon />
-          </IconButton>
-        </Toolbar>
+        </Box>
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
@@ -155,16 +241,6 @@ export default function Admin_Dashboard() {
         </List>
         <Divider />
         <List>
-          {/* <Typography
-            variant="h6"
-            sx={{ marginLeft: 2, marginTop: 2, fontSize: "12px" }}
-          >
-            <ListItemIcon>
-              <SettingsIcon fontSize="25px" />
-            </ListItemIcon>{" "}
-            Management
-          </Typography> */}
-
           <ListItemButton onClick={toggleSellerMenu}>
             <ListItemIcon>
               <StorefrontIcon />
@@ -178,7 +254,10 @@ export default function Admin_Dashboard() {
                 <ListItemIcon>
                   <AddCircleIcon />
                 </ListItemIcon>
-                <ListItemText primary="Create" onClick={handleCreateSellerClick} />
+                <ListItemText
+                  primary="Create"
+                  onClick={handleCreateSellerClick}
+                />
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
