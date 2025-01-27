@@ -16,9 +16,6 @@ import SignupModal from "../User/HomePage/ProfileModal/signup";
 import { AdminHeader } from "../Admin/Dashboard";
 import { SelllerHeader } from "../Seller/Dashboard";
 
-
-
-
 const Navbar = ({ cartItemCount }) => {
   const [uniqueCategories, setUniqueCategories] = useState([]);
   const [showHoverDiv, setShowHoverDiv] = useState(false);
@@ -30,12 +27,12 @@ const Navbar = ({ cartItemCount }) => {
   useEffect(() => {
     const uniqueSections = [...new Set(categories.map((cat) => cat.section))];
     setUniqueCategories(uniqueSections);
-    console.log("menu sbumneu", uniqueCategories);
+    // console.log("menu sbumneu", uniqueCategories);
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-  }, [uniqueCategories]);
+  }, []);
 
   const handleCategoryClick = (categoryName) => {
     if (activeCategory === categoryName) {
@@ -152,21 +149,25 @@ const Navbar = ({ cartItemCount }) => {
               )}
 
               {/* Right-side icons */}
-              <Box sx={{ display: "flex", gap: "12px", marginLeft: "auto" }}>
-                {user ? (
-                  <Typography
-                    variant="body1"
-                    sx={{ color: "#4F62FE", cursor: "pointer" }}
-                    onClick={() => setSignupOpen(true)}
-                  >
-                    {user.username}
-                  </Typography>
-                ) : (
-                  <BsPersonFillCheck
-                    size={24}
-                    onClick={() => setSignupOpen(true)}
-                    style={{ cursor: "pointer", color: "#4F62FE" }}
-                  />
+              <Box sx={{ display: "flex", gap: "12px", marginLeft: "" }}>
+                {user && (
+                  <>
+                    <Typography
+                      variant="body1"
+                      sx={{ color: "#4F62FE", cursor: "pointer" ,marginTop:"10px"}}
+                      onClick={() => setSignupOpen(true)}
+                    >
+                      {user.username}
+                    </Typography>
+
+                    <Box>
+                      <BsPersonFillCheck
+                        size={24}
+                        onClick={() => setSignupOpen(true)}
+                        style={{ cursor: "pointer", color: "#4F62FE",marginTop:"10px" }}
+                      />
+                    </Box>
+                  </>
                 )}
 
                 <IconButton
@@ -181,7 +182,7 @@ const Navbar = ({ cartItemCount }) => {
                 <CiHeart
                   size={24}
                   onClick={() => navigate("/whislist")}
-                  style={{ cursor: "pointer", color: "#4F62FE" }}
+                  style={{ cursor: "pointer", color: "#4F62FE" ,marginTop:"10px"}}
                 />
               </Box>
             </>
@@ -190,7 +191,7 @@ const Navbar = ({ cartItemCount }) => {
       </AppBar>
 
       {user.role === "admin" && <AdminHeader />}
-      {user.role === "seller" && <SelllerHeader/>}
+      {user.role === "seller" && <SelllerHeader />}
       <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} />
     </Box>
   );

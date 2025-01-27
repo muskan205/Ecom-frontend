@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -15,17 +15,21 @@ import { useNavigate } from "react-router";
 
 const SignupModal = ({ open, onClose }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user,setUser]=useState([])
   const navigate = useNavigate();
+  useEffect(() => {
+ 
+    // console.log("menu sbumneu", uniqueCategories);
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+    console.log("usernaem*********",user)
+  }, []);
 
-  const user = {
-    username: "JohnDoe",
-    email: "johndoe@example.com",
-    avatar:
-      "https://cdn.pixabay.com/photo/2020/02/10/12/47/girl-4836394_1280.jpg",
-  };
+  
 
   const handleLogin = () => {
-    // setIsLoggedIn(true);
     navigate("/login");
     onClose();
   };
@@ -58,7 +62,7 @@ const SignupModal = ({ open, onClose }) => {
       </DialogTitle>
 
       <DialogContent>
-        {isLoggedIn ? (
+        {user ? (
           <Box
             sx={{
               display: "flex",
