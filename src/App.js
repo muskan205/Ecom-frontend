@@ -12,6 +12,8 @@ import { SellerCreateForm ,SellerList} from "./component/Admin/Dashboard/seller"
 import { AdminLayout } from "./component/Admin/Layout";
 import { ForgotPassword, Reset, SignIn, Signup, VerifyOtp } from "./component/User/auth";
 import { HomeLayout } from "./component/User/HomePage";
+import SellerLayout from "./component/Seller/Layout.js/layout";
+import { CreateShop } from "./component/Seller/Dashboard";
 
 
 export default function App() {
@@ -80,6 +82,12 @@ export default function App() {
 
         <Route path="/create-seller" element={<SellerCreateForm />} />
         <Route path="/list-seller" element={<SellerList />} />
+
+
+        {/* Seller routes */}
+
+        <Route path="/create-shop" element={<CreateShop />}/>
+        <Route path="/seller-dashboard" element={<SellerLayout />}/>
       </Routes>
     </>
   );

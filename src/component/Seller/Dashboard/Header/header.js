@@ -99,11 +99,11 @@ export const SelllerHeader=() =>{
   const toggleSellerMenu = () => setOpenSellerMenu(!openSellerMenu);
 
   const handleCreateSellerClick = () => {
-    navigate("/create-seller");
+    navigate("/create-shop");
   };
 
   const handleListClick = () => {
-    navigate("/list-seller");
+    navigate("/list-shop");
   };
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -158,11 +158,9 @@ export const SelllerHeader=() =>{
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" sx={{ marginLeft: 1 }}>
-                {user.role === "admin" ? (
-                  <>Admin Dashboard</>
-                ) : (
-                  <>Seller Dashboard</>
-                )}
+               
+                Seller Dashboard
+                
               </Typography>
             </Box>
 

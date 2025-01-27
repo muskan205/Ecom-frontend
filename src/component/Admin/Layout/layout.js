@@ -10,9 +10,9 @@ export const AdminLayout=() =>{
   return (
     <>
     <AdminHeader/>
-      <Box sx={{ marginTop: "23px" }}>
+     
         <Footer />
-      </Box>
+ 
     </>
   );
 }

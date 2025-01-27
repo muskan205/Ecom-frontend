@@ -5,6 +5,7 @@ import { SelllerHeader } from "../Dashboard";
 function SellerLayout() {
   return (
     <>
+    
       <SelllerHeader/>
     </>
   );

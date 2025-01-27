@@ -78,6 +78,9 @@ export const SignIn=()=> {
         if (response.data.role === "admin") {
           navigate("/admin-dashboard");
         }
+        else if (response.data.role === "seller") {
+          navigate("/admin-dashboard");
+        }
         setUser({ email: "", password: "" });
         if (response.data.role === "user") {
           setTimeout(() => {
