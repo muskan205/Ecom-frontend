@@ -79,7 +79,7 @@ export const SignIn=()=> {
           navigate("/admin-dashboard");
         }
         else if (response.data.role === "seller") {
-          navigate("/admin-dashboard");
+          navigate("/seller-dashboard");
         }
         setUser({ email: "", password: "" });
         if (response.data.role === "user") {

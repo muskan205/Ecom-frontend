@@ -4,7 +4,7 @@ import { CommonDataGrid } from "../../../common/table";
 
 
 
-export const ListShop = () => {
+export const ListSubCategory = () => {
   const [rows, setRows] = useState([]);
   const [editableRow, setEditableRow] = useState(null);
   const [updatedFields, setUpdatedFields] = useState({});
@@ -25,11 +25,17 @@ export const ListShop = () => {
 
   const columns = [
     {
-      field: "shopName",
-      headerName: "shopName",
+      field: "subCategoryName",
+      headerName: "subCategoryName",
       width: 150,
       editable: true,
     },
+    {
+        field: "subCategoryName",
+        headerName: "subCategoryName",
+        width: 150,
+        editable: true,
+      },
     
     {
       field: "actions",
@@ -84,7 +90,7 @@ export const ListShop = () => {
           marginTop: "80px",
         }}
       >
-       Shop List
+    Subcategory List
       </Typography>
 
       <CommonDataGrid

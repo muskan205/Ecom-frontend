@@ -14,7 +14,8 @@ import { useNavigate } from "react-router";
 import categories from "../User/All_Json/NewJson.json";
 import SignupModal from "../User/HomePage/ProfileModal/signup";
 import { AdminHeader } from "../Admin/Dashboard";
-import { SelllerHeader } from "../Seller/Dashboard";
+import { SellerHeader } from "../Seller";
+// import { SelllerHeader } from "../Seller/Dashboard";
 
 const Navbar = ({ cartItemCount }) => {
   const [uniqueCategories, setUniqueCategories] = useState([]);
@@ -191,7 +192,7 @@ const Navbar = ({ cartItemCount }) => {
       </AppBar>
 
       {user.role === "admin" && <AdminHeader />}
-      {user.role === "seller" && <SelllerHeader />}
+      {user.role === "seller" && <SellerHeader />}
       <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} />
     </Box>
   );

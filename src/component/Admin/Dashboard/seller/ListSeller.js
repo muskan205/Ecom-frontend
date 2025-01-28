@@ -3,10 +3,9 @@ import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { Typography, Button, TextField } from "@mui/material";
 import axios from "axios";
+import { CommonDataGrid } from "../../../common/table";
 
-
-
-export const SellerList=()=> {
+export const SellerList = () => {
   const [rows, setRows] = useState([]);
   const [editableRow, setEditableRow] = useState(null);
   const [updatedFields, setUpdatedFields] = useState({});
@@ -170,7 +169,6 @@ export const SellerList=()=> {
 
   return (
     <>
-
       <Typography
         sx={{
           display: "flex",
@@ -179,29 +177,22 @@ export const SellerList=()=> {
           marginBottom: 2,
           fontWeight: "500",
           fontSize: "23px",
-          marginTop:"80px"
+          marginTop: "80px",
         }}
       >
         Seller List
       </Typography>
-      <Box
-        sx={{
-          height: 400,
-          width: "70%",
-          display: "flex",
-          justifyContent: "center",
-          margin: "0 auto",
-        }}
-      >
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          checkboxSelection
-          onSelectionModelChange={(selection) => {
-            console.log("Selected rows:", selection);
-          }}
-        />
-      </Box>
+
+      <CommonDataGrid
+        rows={rows}
+        columns={columns}
+        editableRow={editableRow}
+        updatedFields={updatedFields}
+        onEdit={handleEdit}
+        onUpdate={handleUpdate}
+        onFieldChange={handleFieldChange}
+        onDelete={handleDelete}
+      />
     </>
   );
-}
+};

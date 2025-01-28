@@ -20,7 +20,18 @@ import {
   VerifyOtp,
 } from "./component/User/auth";
 import { HomeLayout } from "./component/User/HomePage";
-
+import { AdminCommonLayout } from "./component/Admin/commonLayout";
+import { SellerCommonLayout } from "./component/Seller/commonLayout";
+import {
+  AddCategory,
+  AddProduct,
+  AddSubCategory,
+  CreateShop,
+  ListCategory,
+  ListProducts,
+  ListShop,
+  ListSubCategory,
+} from "./component/Seller/Dashboard";
 
 export default function App() {
   return (
@@ -87,9 +98,95 @@ export default function App() {
 
         <Route path="/admin-dashboard" element={<AdminCommonLayout />} />
 
-        <Route path="/create-seller" element={<SellerCreateForm />} />
-        <Route path="/list-seller" element={<SellerList />} />
+        <Route
+          path="/create-seller"
+          element={
+            <AdminCommonLayout>
+              <SellerCreateForm />
+            </AdminCommonLayout>
+          }
+        />
+        <Route
+          path="/list-seller"
+          element={
+            <AdminCommonLayout>
+              <SellerList />
+            </AdminCommonLayout>
+          }
+        />
+
+        {/* Seller Routes */}
+
+        <Route path="/seller-dashboard" element={<SellerCommonLayout />} />
+        <Route
+          path="/create-shop"
+          element={
+            <SellerCommonLayout>
+              <CreateShop />
+            </SellerCommonLayout>
+          }
+        />
+        <Route
+          path="/shop-list"
+          element={
+            <SellerCommonLayout>
+              <ListShop />
+            </SellerCommonLayout>
+          }
+        />
+        <Route
+          path="/create-subcategory"
+          element={
+            <SellerCommonLayout>
+              <AddSubCategory />
+            </SellerCommonLayout>
+          }
+        />
+        <Route
+          path="/list-subcategory"
+          element={
+            <SellerCommonLayout>
+              <ListSubCategory />
+            </SellerCommonLayout>
+          }
+        />
+        <Route
+          path="/create-category"
+          element={
+            <SellerCommonLayout>
+              <AddCategory />
+            </SellerCommonLayout>
+          }
+        />
+        <Route
+          path="/list-category"
+          element={
+            <SellerCommonLayout>
+              <ListCategory />
+            </SellerCommonLayout>
+          }
+        />
+         <Route
+          path="/create-product"
+          element={
+            <SellerCommonLayout>
+              <AddProduct />
+            </SellerCommonLayout>
+          }
+        />
+         <Route
+          path="/list-product"
+          element={
+            <SellerCommonLayout>
+              <ListProducts />
+            </SellerCommonLayout>
+          }
+        />
       </Routes>
+     
+   
+
+
     </>
   );
 }
