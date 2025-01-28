@@ -8,12 +8,18 @@ import {
 import { AddToCartPage } from "./component/User/AllProducts";
 import { ProductsLayout } from "./component/User/AllProducts";
 import CommonLayout from "./component/User/CommonLayout";
-import { SellerCreateForm ,SellerList} from "./component/Admin/Dashboard/seller";
-import { AdminLayout } from "./component/Admin/Layout";
-import { ForgotPassword, Reset, SignIn, Signup, VerifyOtp } from "./component/User/auth";
+import {
+  SellerCreateForm,
+  SellerList,
+} from "./component/Admin/Dashboard/seller";
+import {
+  ForgotPassword,
+  Reset,
+  SignIn,
+  Signup,
+  VerifyOtp,
+} from "./component/User/auth";
 import { HomeLayout } from "./component/User/HomePage";
-import SellerLayout from "./component/Seller/Layout.js/layout";
-import { CreateShop } from "./component/Seller/Dashboard";
 
 
 export default function App() {
@@ -35,7 +41,7 @@ export default function App() {
         ></Route>
 
         <Route
-          path="/*"
+          path="/"
           element={
             <CommonLayout>
               <HomeLayout />
@@ -78,16 +84,11 @@ export default function App() {
         />
 
         {/* Admin Routes */}
-        <Route path="/admin-dashboard" element={<AdminLayout />} />
+
+        <Route path="/admin-dashboard" element={<AdminCommonLayout />} />
 
         <Route path="/create-seller" element={<SellerCreateForm />} />
         <Route path="/list-seller" element={<SellerList />} />
-
-
-        {/* Seller routes */}
-
-        <Route path="/create-shop" element={<CreateShop />}/>
-        <Route path="/seller-dashboard" element={<SellerLayout />}/>
       </Routes>
     </>
   );

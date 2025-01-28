@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
 
 import axios from "axios";
-import { AdminLayout } from "../../Layout";
+
 
 
 export const SellerCreateForm = () => {
@@ -10,6 +10,7 @@ export const SellerCreateForm = () => {
     username: "",
     email: "",
     shopName: "",
+    role:"",
     password: "",
   });
 
@@ -22,7 +23,7 @@ export const SellerCreateForm = () => {
       );
       if (response.status === 200) {
         alert("User created successfully");
-        setUser({ username: "", email: "", shopName: "", password: "" });
+        setUser({ username: "", email: "", shopName: "", role:"",password: "" });
       }
     } catch (error) {
       console.log("Error", error);
@@ -39,7 +40,7 @@ export const SellerCreateForm = () => {
 
   return (
     <>
-      <AdminLayout />
+   
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -49,9 +50,10 @@ export const SellerCreateForm = () => {
           gap: 2,
           width: "500px",
           margin: "0 auto",
+          marginTop:"70px"
         }}
       >
-        <Typography variant="h4" align="center" gutterBottom>
+        <Typography variant="h5" align="center" gutterBottom>
           Create Seller
         </Typography>
         <TextField
@@ -80,6 +82,16 @@ export const SellerCreateForm = () => {
           fullWidth
           name="shopName"
           value={user.shopName}
+          onChange={handleChange}
+        />
+        <TextField
+          label="Role"
+          type="text" // Changed to 'password' type for better security
+          variant="outlined"
+          required
+          fullWidth
+          name="role"
+          value={user.role}
           onChange={handleChange}
         />
         <TextField

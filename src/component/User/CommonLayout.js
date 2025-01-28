@@ -19,7 +19,7 @@ function CommonLayout({ children }) {
     <>
       <Navbar cartItemCount={cartItemCount} />
       <main>{children}</main>
-      <Box sx={{ marginTop: "350px" }}></Box>
+      <Box sx={{ marginTop: "600px" }}></Box>
       <Footer />
     </>
   );

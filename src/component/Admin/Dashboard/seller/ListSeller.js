@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { Typography, Button, TextField } from "@mui/material";
 import axios from "axios";
-import { AdminLayout } from "../../Layout";
+
 
 
 export const SellerList=()=> {
@@ -170,7 +170,7 @@ export const SellerList=()=> {
 
   return (
     <>
-      <AdminLayout/>
+
       <Typography
         sx={{
           display: "flex",
@@ -179,6 +179,7 @@ export const SellerList=()=> {
           marginBottom: 2,
           fontWeight: "500",
           fontSize: "23px",
+          marginTop:"80px"
         }}
       >
         Seller List
