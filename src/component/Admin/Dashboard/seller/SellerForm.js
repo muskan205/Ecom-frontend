@@ -3,14 +3,12 @@ import { Box, TextField, Button, Typography } from "@mui/material";
 
 import axios from "axios";
 
-
-
 export const SellerCreateForm = () => {
   const [user, setUser] = useState({
     username: "",
     email: "",
     shopName: "",
-    role:"",
+    role: "",
     password: "",
   });
 
@@ -23,7 +21,13 @@ export const SellerCreateForm = () => {
       );
       if (response.status === 200) {
         alert("User created successfully");
-        setUser({ username: "", email: "", shopName: "", role:"",password: "" });
+        setUser({
+          username: "",
+          email: "",
+          shopName: "",
+          role: "",
+          password: "",
+        });
       }
     } catch (error) {
       console.log("Error", error);
@@ -40,7 +44,6 @@ export const SellerCreateForm = () => {
 
   return (
     <>
-   
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -50,7 +53,7 @@ export const SellerCreateForm = () => {
           gap: 2,
           width: "500px",
           margin: "0 auto",
-          marginTop:"70px"
+          marginTop: "70px",
         }}
       >
         <Typography variant="h5" align="center" gutterBottom>
@@ -86,7 +89,7 @@ export const SellerCreateForm = () => {
         />
         <TextField
           label="Role"
-          type="text" // Changed to 'password' type for better security
+          type="text"
           variant="outlined"
           required
           fullWidth
@@ -96,7 +99,7 @@ export const SellerCreateForm = () => {
         />
         <TextField
           label="Password"
-          type="password" // Changed to 'password' type for better security
+          type="password"
           variant="outlined"
           required
           fullWidth
@@ -111,5 +114,3 @@ export const SellerCreateForm = () => {
     </>
   );
 };
-
-

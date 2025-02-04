@@ -60,11 +60,11 @@ export const SignIn=()=> {
 
     try {
       const response = await axios.post(
-        "http://localhost:3004/api/login",
+        "http://localhost:3004/api/test-login",
         user
       );
-      console.log(response.data.role, "***********");
-      console.log("respose***********", response.data);
+      console.log(response.data, "***********");
+      console.log("respose***********", response.data.account.role);
 
       if (response.status === 200) {
         setSnackbarState({
@@ -75,8 +75,11 @@ export const SignIn=()=> {
 
         localStorage.setItem("user", JSON.stringify(response.data));
 
-        if (response.data.role === "admin") {
+        if (response.data.account.role === "admin") {
           navigate("/admin-dashboard");
+        }
+        else if (response.data.account.role === "seller") {
+          navigate("/seller-dashboard");
         }
         setUser({ email: "", password: "" });
         if (response.data.role === "user") {
@@ -183,7 +186,7 @@ export const SignIn=()=> {
 
             <p style={{ marginLeft: "55px", marginTop: "3px" }} className="">
               Don't have an account ?{" "}
-              <a style={{ textDecoration: "none", color: "" }} href="/">
+              <a style={{ textDecoration: "none", color: "" }} href="/register">
                 Sign Up
               </a>
             </p>

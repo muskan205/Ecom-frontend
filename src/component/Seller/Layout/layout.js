@@ -1,11 +1,12 @@
 import React from "react";
-import { SelllerHeader } from "../Dashboard";
+import { SellerHeader } from "../Dashboard";
 
 
 function SellerLayout() {
   return (
     <>
-      <SelllerHeader/>
+    
+      <SellerHeader/>
     </>
   );
 }

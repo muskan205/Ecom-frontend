@@ -20,9 +20,10 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import StorefrontIcon from "@mui/icons-material/Storefront";
-
 import { useNavigate } from "react-router-dom";
 import { Avatar, Menu, MenuItem } from "@mui/material";
+import CategoryIcon from '@mui/icons-material/Category';
+import {  CategoryRounded, ProductionQuantityLimitsOutlined } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
@@ -84,27 +85,57 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export const SelllerHeader=() =>{
-  const [open, setOpen] = React.useState(false);
-  const [openSellerMenu, setOpenSellerMenu] = React.useState(false);
-
-  const [user, setUser] = useState({});
-  const [anchorEl, setAnchorEl] = useState(null);
-  const isMenuOpen = Boolean(anchorEl);
-
+export const SellerHeader = () => {
+  const [open, setOpen] = useState(false);
+  const [menus, setMenus] = useState([
+    {
+      title: "Shop",
+      icon: <StorefrontIcon />,
+      items: [
+        { text: "Create Shop", onClick: () => navigate("/create-shop") },
+        { text: "List Shop", onClick: () => navigate("/shop-list") },
+      ],
+    },
+    {
+      title: "Sub Category",
+      icon: <CategoryRounded/>,
+      items: [
+        { text: "Create SubCategory", onClick: () => navigate("/create-subcategory") },
+        { text: "List SubCategory", onClick: () => navigate("/list-subcategory") },
+      ],
+    },
+    {
+      title: "Category", // Add more menus as needed
+      icon:  <CategoryIcon />,
+      items: [
+        { text: "Create Category", onClick: () => navigate("/create-category") },
+        { text: "List Category", onClick: () => navigate("/list-category") },
+      ],
+    },
+    {
+      title: "Products", // Add more menus as needed
+      icon: <ProductionQuantityLimitsOutlined />,
+      items: [
+        { text: "Create Products", onClick: () => navigate("/create-product") },
+        { text: "List Products", onClick: () => navigate("/list-product") },
+      ],
+    },
+  ]);
+  const [openMenu, setOpenMenu] = useState({});
   const navigate = useNavigate();
 
   const handleDrawerOpen = () => setOpen(true);
   const handleDrawerClose = () => setOpen(false);
-  const toggleSellerMenu = () => setOpenSellerMenu(!openSellerMenu);
 
-  const handleCreateSellerClick = () => {
-    navigate("/create-seller");
+  const toggleMenu = (index) => {
+    setOpenMenu((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
-  const handleListClick = () => {
-    navigate("/list-seller");
+  const handleLogin = () => {
+    navigate("/login");
   };
+
+
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -113,59 +144,41 @@ export const SelllerHeader=() =>{
     setAnchorEl(null);
   };
 
-  const handleLogin = () => {
-    navigate("/login");
-    handleMenuClose();
-  };
-
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser({});
     navigate("/login");
-    handleMenuClose();
   };
+
+  const [user, setUser] = useState({});
+  const [anchorEl, setAnchorEl] = useState(null);
+  const isMenuOpen = Boolean(anchorEl);
+
   useEffect(() => {
     const data = localStorage.getItem("user");
     setUser(data ? JSON.parse(data) : {});
   }, []);
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" sx={{}}>
-        <Box
-          sx={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "space-between",
-          }}
-        >
-          <Toolbar
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
+      <AppBar position="fixed">
+        <Box sx={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
+          <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             {/* Left Section*/}
             <Box sx={{ display: "flex", alignItems: "center" }}>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                edge="start"
-                sx={{ marginRight: 2, ...(open && { display: "none" }) }}
-              >
+              <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerOpen} edge="start" sx={{ marginRight: 2, ...(open && { display: "none" }) }}>
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" sx={{ marginLeft: 1 }}>
-                {user.role === "admin" ? (
-                  <>Admin Dashboard</>
-                ) : (
-                  <>Seller Dashboard</>
-                )}
+                Seller Dashboard
               </Typography>
             </Box>
 
+           
+          </Toolbar>
+
+         
             {/* Right Section: Close Drawer Icon */}
             <IconButton
               color="inherit"
@@ -178,7 +191,7 @@ export const SelllerHeader=() =>{
             >
               <ChevronLeftIcon />
             </IconButton>
-          </Toolbar>
+          
 
           <Typography sx={{ marginLeft: "auto", alignSelf: "center" }}>
             <Box sx={{ display: "flex", marginLeft: "-150px" }}>
@@ -223,6 +236,7 @@ export const SelllerHeader=() =>{
               )}
             </Box>
           </Typography>
+         
         </Box>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -243,40 +257,29 @@ export const SelllerHeader=() =>{
           </ListItem>
         </List>
         <Divider />
-      
-            <List>
-              <ListItemButton onClick={toggleSellerMenu}>
-                <ListItemIcon>
-                  <StorefrontIcon />
-                </ListItemIcon>
-                <ListItemText primary="Shop" />
-                <ExpandMoreIcon />
-              </ListItemButton>
-              <Collapse in={openSellerMenu} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  <ListItemButton sx={{ pl: 4 }}>
+        {/* Dynamically render menus */}
+        {menus.map((menu, index) => (
+          <List key={index}>
+            <ListItemButton onClick={() => toggleMenu(index)}>
+              <ListItemIcon>{menu.icon}</ListItemIcon>
+              <ListItemText primary={menu.title} />
+              <ExpandMoreIcon />
+            </ListItemButton>
+            <Collapse in={openMenu[index]} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                {menu.items.map((item, itemIndex) => (
+                  <ListItemButton key={itemIndex} sx={{ pl: 4 }} onClick={item.onClick}>
                     <ListItemIcon>
                       <AddCircleIcon />
                     </ListItemIcon>
-                    <ListItemText
-                      primary="Create shop"
-                      onClick={handleCreateSellerClick}
-                    />
+                    <ListItemText primary={item.text} />
                   </ListItemButton>
-                  <ListItemButton sx={{ pl: 4 }}>
-                    <ListItemIcon>
-                      <AddCircleIcon />
-                    </ListItemIcon>
-                    <ListItemText
-                      primary="List shop"
-                      onClick={handleListClick}
-                    />
-                  </ListItemButton>
-                </List>
-              </Collapse>
-            </List>
-         
+                ))}
+              </List>
+            </Collapse>
+          </List>
+        ))}
       </Drawer>
     </Box>
   );
-}
+};

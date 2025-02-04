@@ -1,2 +1,5 @@
 export * from './Header'
 export * from './shop'
+export * from './ProductCategory'
+export * from './ProductSubCategory'
+export * from './Products'
