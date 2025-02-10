@@ -1,9 +1,16 @@
 // formConstants.js
 
+
+
 export const FORM_FEILDS = {
     shop: [
+      // {name:"sellerId",label:"SellerId",type:"text",required:true},
       { name: "shopName", label: "Shop Name", type: "text", required: true },
-      { name: "ownerId", label: "Owner ID", type: "text", required: true },
+      { name: "shopDescription", label: "shopDescription", type: "text", required: true },
+      { name: "category", label: "category", type: "select", required: true },
+      { name: "location", label: "location", type: "text", required: true },
+      { name: "logo_url", label: "logo_url", type: "file", required: true },
+      { name: "active", label: "active", type: "boolean", required: true },
     ],
     category: [
       { name: "categoryName", label: "Category Name", type: "text", required: true },

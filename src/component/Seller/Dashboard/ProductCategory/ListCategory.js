@@ -1,42 +1,57 @@
-import React, { useState } from "react";
-import { Typography, Button} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Typography, Button } from "@mui/material";
 import { CommonDataGrid } from "../../../common/table";
-
-
+import axios from "axios";
 
 export const ListCategory = () => {
   const [rows, setRows] = useState([]);
   const [editableRow, setEditableRow] = useState(null);
   const [updatedFields, setUpdatedFields] = useState({});
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3004/shop/get-category"
+        );
+        if (response.status === 200) {
+          const categories = response.data.result.shops.map((shop) => ({
+            id: shop.id,
+            CategoryName: shop.categoryName,
+            // CategoryId: shop.id,
+          }));
+          setRows(categories);
+        }
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
 
+    fetchCategories();
+  }, []);
 
   const handleEdit = (row) => {
     setEditableRow(row.id);
-    setUpdatedFields({ name: row.name, email: row.email, role: row.role });
+    setUpdatedFields({ ...row });
   };
-
-
 
   const handleFieldChange = (field, value) => {
     setUpdatedFields((prev) => ({ ...prev, [field]: value }));
   };
 
-
   const columns = [
     {
       field: "CategoryName",
-      headerName: "CategoryName",
-      width: 150,
+      headerName: "Category Name",
+      width: 200,
       editable: true,
     },
     {
-        field: "CategoryId",
-        headerName: "CategoryId",
-        width: 150,
-        editable: true,
-      },
-    
+      field: "CategoryId",
+      headerName: "Category ID",
+      width: 150,
+      editable: true,
+    },
     {
       field: "actions",
       headerName: "Actions",
@@ -49,7 +64,6 @@ export const ListCategory = () => {
               color="primary"
               size="small"
               style={{ marginRight: 8 }}
-            
             >
               Update
             </Button>
@@ -64,12 +78,7 @@ export const ListCategory = () => {
               Edit
             </Button>
           )}
-          <Button
-            variant="outlined"
-            color="secondary"
-            size="small"
-           
-          >
+          <Button variant="outlined" color="secondary" size="small">
             Delete
           </Button>
         </>
@@ -90,7 +99,7 @@ export const ListCategory = () => {
           marginTop: "80px",
         }}
       >
-   Category List
+        Category List
       </Typography>
 
       <CommonDataGrid

@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from "react";
-import CommonForm from "../../common/form";
+import React from "react";
+import axios from "axios";
 import { Box, Typography } from "@mui/material";
+import CommonForm from "../../common/form";
+
 export const AddCategory = () => {
-  const [subcategoryFormData, setSubcategoryFormData] = useState({});
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    setCategories([
-      { id: 1, name: "Electronics" },
-      { id: 2, name: "Fashion" },
-    ]);
-  }, []);
-
-  const handleSubcategorySubmit = (formData) => {
-    console.log("category Form Submitted:", formData);
+  const handleCategorySubmit = async (formValues) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3004/shop/create-category",
+        formValues
+      );
+      if (response.status === 200) {
+        alert("Category created successfully");
+      }
+    } catch (error) {
+      console.error("Error creating category", error);
+      alert("Error creating category");
+    }
   };
 
   return (
     <Box
-      component="form"
       sx={{
         display: "flex",
         flexDirection: "column",
-        gap: 2,
-        width: "500px",
+        alignItems: "center",
+        width: "100%",
         margin: "0 auto",
         marginTop: "70px",
       }}
@@ -34,9 +36,8 @@ export const AddCategory = () => {
 
       <CommonForm
         entityType="category"
-        formData={subcategoryFormData}
-        onSubmit={handleSubcategorySubmit}
-        categories={categories}
+        formData={{}}
+        onSubmit={handleCategorySubmit}
       />
     </Box>
   );

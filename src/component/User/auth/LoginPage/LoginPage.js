@@ -60,7 +60,7 @@ export const SignIn=()=> {
 
     try {
       const response = await axios.post(
-        "http://localhost:3004/api/test-login",
+        "http://localhost:3004/api/login",
         user
       );
       console.log(response.data, "***********");

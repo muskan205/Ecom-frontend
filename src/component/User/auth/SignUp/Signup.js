@@ -64,7 +64,7 @@ export const Signup=()=> {
 
     try {
       const response = await axios.post(
-        "http://localhost:3004/api/test-register",
+        "http://localhost:3004/api/register",
         user
       );
       if (response.status === 200) {
