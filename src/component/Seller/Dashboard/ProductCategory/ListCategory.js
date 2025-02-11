@@ -46,12 +46,7 @@ export const ListCategory = () => {
       width: 200,
       editable: true,
     },
-    {
-      field: "CategoryId",
-      headerName: "Category ID",
-      width: 150,
-      editable: true,
-    },
+    
     {
       field: "actions",
       headerName: "Actions",

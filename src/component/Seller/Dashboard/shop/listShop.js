@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Typography, Button} from "@mui/material";
 import { CommonDataGrid } from "../../../common/table";
+import axios from "axios";
 
 
 
@@ -15,8 +16,51 @@ export const ListShop = () => {
     setEditableRow(row.id); // Set the ID of the row being edited
     setUpdatedFields({ name: row.name, email: row.email, role: row.role });
   };
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3004/shop/delete-shop`,
+        { data: { id } } // Send the id in the request body
+      );
 
+      if (response.status === 200) {
+        console.log("Seller deleted successfully:", response.data);
 
+        // Remove the deleted seller from the UI
+        setRows((prevRows) => prevRows.filter((row) => row.id !== id));
+      }
+    } catch (error) {
+      console.error("Error deleting seller:", error);
+    }
+  };
+
+const [categories,setCategories]=useState([])
+
+  useEffect(() => {
+   
+    const fetchShops = async () => {
+      try {
+        const response = await axios.get("http://localhost:3004/shop/get-all-shops");
+        if (response.status === 200) {
+          setCategories(response.data.result.shops);
+          const shops = response.data.result.shops.map((shop) => ({
+            id: shop.id,
+           shopName: shop.shopName,
+           shopDescription:shop.shopDescription,
+           location:shop.location,
+           categoryName:shop.categoryName,
+           logo_url:shop.logo_url
+          
+          }));
+          setRows(shops)
+          console.log("shops",shops)
+        }
+      } catch (error) {
+        console.error("Error fetching categories", error);
+      }
+    };
+    fetchShops();
+  }, []);
 
   const handleFieldChange = (field, value) => {
     setUpdatedFields((prev) => ({ ...prev, [field]: value }));
@@ -30,6 +74,42 @@ export const ListShop = () => {
       width: 150,
       editable: true,
     },
+    {
+      field: "shopDescription",
+      headerName: "shopDescription",
+      width: 150,
+      editable: true,
+    },
+    {
+      field: "location",
+      headerName: "location",
+      width: 150,
+      editable: true,
+    },
+    {
+      field: "categoryName",
+      headerName: "CategoryName",
+      width: 150,
+      editable: true,
+    },
+    //show logo url 
+    {
+      field: "logo_url",
+      headerName: "Logo",
+      width: 150,
+      renderCell: (params) => (
+        params.value ? (
+          <img
+            src={params.value} 
+            alt="Shop Logo"
+            style={{ width: 50, height: 50, objectFit: "cover", borderRadius: "5px" }}
+          />
+        ) : (
+          "No Image"
+        )
+      ),
+    }
+,    
     
     {
       field: "actions",
@@ -62,7 +142,7 @@ export const ListShop = () => {
             variant="outlined"
             color="secondary"
             size="small"
-           
+           onClick={()=>handleDelete(params.row.id)}
           >
             Delete
           </Button>
@@ -95,7 +175,7 @@ export const ListShop = () => {
         onEdit={handleEdit}
         onUpdate={""}
         onFieldChange={handleFieldChange}
-        onDelete={""}
+        // onDelete={handleDelete}
       />
     </>
   );

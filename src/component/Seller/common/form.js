@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Box, TextField, Button, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
-import { FORM_FEILDS } from "./../../Seller/constants/form.field"; // Import the constants
+import {
+  Box,
+  TextField,
+  Button,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+} from "@mui/material";
+import { FORM_FEILDS } from "./../../Seller/constants/form.field"; // Import form fields
 
 const CommonForm = ({ entityType, formData, onSubmit, categories }) => {
   const [formValues, setFormValues] = useState(formData || {});
@@ -16,8 +24,22 @@ const CommonForm = ({ entityType, formData, onSubmit, categories }) => {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
+    const { name, type } = e.target;
+
+    if (type === "file") {
+      const file = e.target.files[0]; // Get the selected file
+      console.log("file", file);
+      setFormValues((prevValues) => ({
+        ...prevValues,
+        [name]: file, // Store file object, not just the name
+      }));
+    } else {
+      const { value } = e.target;
+      setFormValues((prevValues) => ({
+        ...prevValues,
+        [name]: value,
+      }));
+    }
   };
 
   return (
@@ -50,6 +72,19 @@ const CommonForm = ({ entityType, formData, onSubmit, categories }) => {
                 ))}
               </Select>
             </FormControl>
+          );
+        } else if (type === "file") {
+          return (
+            <TextField
+              key={name}
+              label={label}
+              name={name}
+              type="file"
+              onChange={handleChange}
+              fullWidth
+              required={required}
+              inputProps={{ accept: "image/*" }} // Restrict to image files
+            />
           );
         } else {
           return (

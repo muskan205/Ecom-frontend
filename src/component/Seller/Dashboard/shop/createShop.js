@@ -1,66 +1,71 @@
 import React, { useState, useEffect } from "react";
-import { Box, TextField, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import CommonForm from "../../common/form";
 import axios from "axios";
-import { useGetCategories } from "../../../hooks/getPRoductCategory";
 
 export const CreateShop = () => {
+  const getSellerId = () => {
+    const userData = JSON.parse(localStorage.getItem("user"));  
+    return userData?.account?.seller?.id || "";
+  };
+
   const [user, setUser] = useState({
-    sellerId: "",
+    sellerId: getSellerId(),
     categoryId: "",
     shopName: "",
     shopDescription: "",
     location: "",
     logo_url: "",
   });
-  const [categories, setCategories] = useState([]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const [categories, setCategories] = useState([]);
+  const handleSubmit = async (formData) => {
     try {
+      //HANDLING FORM DATA FOR UPLOADING IMAGES
+      const formdata = new FormData();
+      Object.keys(formData).forEach((key) => {
+        formdata.append(key, formData[key]);
+      });
+  
       const response = await axios.post(
         "http://localhost:3004/shop/create-shop",
-        user
+        formdata
       );
+      
       if (response.status === 200) {
         alert("Shop created successfully");
+        setUser({
+          sellerId: getSellerId(),
+          categoryId: "",
+          shopName: "",
+          shopDescription: "",
+          location: "",
+          logo_url: "",
+        });
       }
     } catch (error) {
       console.error("Error creating shop", error);
       alert("Error creating shop");
     }
-
-    setUser({
-      sellerId: "",
-      categoryId: "",
-      shopName: "",
-      shopDescription: "",
-      location: "",
-      logo_url: "",
-    });
   };
-// const {categories,data,error} =useGetCategories()
+
   useEffect(() => {
-    console.log(localStorage.getItem("user"));
+   
     const fetchCategories = async () => {
       try {
         const response = await axios.get("http://localhost:3004/shop/get-category");
         if (response.status === 200) {
           setCategories(response.data.result.shops);
-          console.log("response.data",response.data.result.shops)
         }
       } catch (error) {
         console.error("Error fetching categories", error);
       }
     };
     fetchCategories();
-
   }, []);
 
   return (
     <Box
-      component="form"
-      onSubmit={handleSubmit}
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -78,7 +83,7 @@ export const CreateShop = () => {
         entityType="shop"
         formData={user}
         categories={categories}
-        onChange={(data) => setUser(data)}
+        onChange={setUser}
         onSubmit={handleSubmit}
       />
     </Box>
