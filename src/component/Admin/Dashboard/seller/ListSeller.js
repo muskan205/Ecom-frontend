@@ -17,20 +17,18 @@ export const SellerList = () => {
           "http://localhost:3004/seller/get-all-seller"
         );
         if (response.status === 200) {
-          console.log("response*************",response.data.seller)
+          console.log("response*************", response.data.seller);
           const sellers = response.data.seller.map((seller) => ({
             id: seller.seller.id, // Access the nested seller object
-        name: seller.seller.username,
-        email: seller.email,
-        shopName:seller.seller.shopName,
-        accountId:seller.seller.accountId
+            name: seller.seller.username,
+            email: seller.email,
+            shopName: seller.seller.shopName,
+            accountId: seller.seller.accountId,
             // email: seller.email,
             // role: seller.seller.role,
-
           }));
-          setRows(sellers)
-          console.log("sellers",response.data.seller)
-           
+          setRows(sellers);
+          console.log("sellers", response.data.seller);
         }
       } catch (error) {
         console.error("Error fetching sellers:", error);
@@ -42,18 +40,23 @@ export const SellerList = () => {
 
   const handleEdit = (row) => {
     setEditableRow(row.id); // Set the ID of the row being edited
-    setUpdatedFields({ id:row.accountId,name: row.name, email: row.email, shopName:row.shopName });
+    setUpdatedFields({
+      id: row.accountId,
+      name: row.name,
+      email: row.email,
+      shopName: row.shopName,
+    });
   };
 
   const handleUpdate = async (id) => {
     try {
       const response = await axios.put(
-        `http://localhost:3004/seller/update-seller`,  // Remove id from query params
+        `http://localhost:3004/seller/update-seller`, // Remove id from query params
         { ...updatedFields } // Send id and updated fields in request body
       );
       if (response.status === 200) {
         console.log("Seller updated successfully:", response.data);
-  
+
         setRows((prevRows) =>
           prevRows.map((row) =>
             row.id === id ? { ...row, ...updatedFields } : row
@@ -65,7 +68,6 @@ export const SellerList = () => {
       console.error("Error updating seller:", error);
     }
   };
-  
 
   const handleFieldChange = (field, value) => {
     setUpdatedFields((prev) => ({ ...prev, [field]: value }));
@@ -90,7 +92,6 @@ export const SellerList = () => {
   };
 
   const columns = [
-    
     {
       field: "name",
       headerName: "Name",
