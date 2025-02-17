@@ -16,7 +16,7 @@ export const FORM_FEILDS = {
       { name: "categoryName", label: "Category Name", type: "text", required: true },
     ],
     subcategory: [
-      { name: "subcategoryName", label: "Subcategory Name", type: "text", required: true },
+      { label: 'SubCategory Name', name: 'subCategoryName', type: "text", required: true },
       { name: "categoryId", label: "Category", type: "select", required: true, options: [] },  
     ],
     product: [

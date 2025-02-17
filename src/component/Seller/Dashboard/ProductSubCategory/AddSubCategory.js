@@ -1,60 +1,59 @@
-import React, { useEffect, useState } from "react";
-import CommonForm from "../../common/form";
+import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import axios from "axios";
+import CommonForm from "../../common/form"; // Import the CommonForm
+
 export const AddSubCategory = () => {
-  const [subcategoryFormData, setSubcategoryFormData] = useState({});
+  const [user, setUser] = useState({
+    categoryId: "",
+    subCategoryName: "",
+  });
+
   const [categories, setCategories] = useState([]);
-  const [rows, setRows] = useState([]);
-  // const [editableRow, setEditableRow] = useState(null);
-  // const [updatedFields, setUpdatedFields] = useState({});
+
+  // Fetch categories from API
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3004/shop/get-category"
-        );
+        const response = await axios.get("http://localhost:3004/shop/get-category");
         if (response.status === 200) {
-          const categories = response.data.result.shops.map((shop) => ({
-            id: shop.id,
-            CategoryName: shop.categoryName,
-            // CategoryId: shop.id,
-          }));
-          setRows(categories);
+          setCategories(response.data.result.shops); 
         }
       } catch (error) {
-        console.error("Error fetching categories:", error);
+        console.error("Error fetching categories", error);
       }
     };
-
     fetchCategories();
   }, []);
 
- 
-  const handleSubcategorySubmit = async(formData) => {
-  
-      try {
-        const response = await axios.get(
-          "http://localhost:3004/shop/create-subCategory"
-        );
-        if (response.status === 200) {
-          const categories = response.data.result.shops.map((shop) => ({
-            id: shop.id,
-            CategoryName: shop.categoryName,
-            // CategoryId: shop.id,
-          }));
-          setRows(categories);
+  // Handle form submission
+  const handleSubmit = async (formData) => {
+    console.log("Submitting Data:", formData); // Debugging log
+    try {
+      const response = await axios.post(
+        "http://localhost:3004/shop/create-subCategory",
+        {
+          categoryId: formData.categoryId,
+          subCategoryName: formData.subCategoryName,
         }
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-      
-    };
-   
+      );
+
+      console.log("Response Data:", response.data); // Debugging log
+
+      if (response.status === 200) {
+        setUser({
+          categoryId: "",
+          subCategoryName: "",
+        });
+      }
+    } catch (error) {
+      console.error("Error creating subCategory:", error.response?.data || error);
+      alert(`Error: ${error.response?.data?.message || "Something went wrong"}`);
+    }
   };
 
   return (
     <Box
-      component="form"
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -65,14 +64,14 @@ export const AddSubCategory = () => {
       }}
     >
       <Typography variant="h5" align="center" gutterBottom>
-      Add Subcategory
+        Create SubCategory
       </Typography>
 
       <CommonForm
         entityType="subcategory"
-        formData={subcategoryFormData}
-        onSubmit={handleSubcategorySubmit}
+        formData={user}
         categories={categories}
+        onSubmit={handleSubmit}
       />
     </Box>
   );
