@@ -6,6 +6,8 @@ import { useNavigate } from "react-router";
 
 import { MdOutlineFingerprint } from "react-icons/md";
 import "./Forgot-Email.css";
+import { useDispatch } from "react-redux";
+import { forgetPassword } from "../../../redux/auth.slice";
 
 export const ForgotPassword=()=> {
   const [email, setEmail] = useState("");
@@ -13,36 +15,30 @@ export const ForgotPassword=()=> {
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+const dispatch =useDispatch()
+const ResetPasswordEmail = async () => {
+  if (loading) return;
 
-  const ResetPasswordEmail = async () => {
-    debugger;
-    if (loading) return; // prevent sending a new request if one is already in progress
+  setLoading(true);
+  try {
+    const response = await dispatch(forgetPassword({ email })).unwrap();
 
-    setLoading(true);
-    try {
-      // debugger;
-      const response = await axios.post(
-        "http://localhost:3004/api/forgetPAssword",
-        { email }
-      );
-      localStorage.setItem("data", JSON.stringify(response.data.user.email));
-      localStorage.setItem("id", JSON.stringify(response.data.user.id));
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-      if (response.status === 200) {
-        setSuccessMessage("Email Verified");
+    localStorage.setItem("data", JSON.stringify(response.user.email));
+    localStorage.setItem("id", JSON.stringify(response.user.id));
+    localStorage.setItem("user", JSON.stringify(response.user));
 
-        navigate("/verifyOtp");
-        setError("");
-      } else {
-        throw new Error("Something went wrong");
-      }
-    } catch (error) {
-      setError("Something went wrong. Please try again.");
-      setSuccessMessage("");
-    } finally {
-      setLoading(false);
-    }
-  };
+    setSuccessMessage("Email Verified");
+    setError("");
+    navigate("/verifyOtp");
+  } catch (err) {
+    console.error("Forget password error:", err);
+    setError(err.message || "Something went wrong. Please try again.");
+    setSuccessMessage("");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const handleBackNavigation = () => {
     navigate(-1);

@@ -1,48 +1,41 @@
 import React, { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
-import { DataGrid } from "@mui/x-data-grid";
 import { Typography, Button, TextField } from "@mui/material";
 import axios from "axios";
 import { CommonDataGrid } from "../../../common/table";
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteSeller, fetchSellers, updateSeller } from './../../../redux/seller.slice'
 
 export const SellerList = () => {
   const [rows, setRows] = useState([]);
   const [editableRow, setEditableRow] = useState(null);
   const [updatedFields, setUpdatedFields] = useState({});
+  const dispatch = useDispatch();
+  const { sellers, loading, error } = useSelector((state) => state.sellers); // Corrected selector
+  console.log("sellers from redux", sellers);
 
   useEffect(() => {
-    const fetchSellers = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:3004/seller/get-all-seller"
-        );
-        if (response.status === 200) {
-          console.log("response*************", response.data.seller);
-          const sellers = response.data.seller.map((seller) => ({
-            id: seller.seller.id, // Access the nested seller object
-            name: seller.seller.username,
-            email: seller.email,
-            shopName: seller.seller.shopName,
-            accountId: seller.seller.accountId,
-            // email: seller.email,
-            // role: seller.seller.role,
-          }));
-          setRows(sellers);
-          console.log("sellers", response.data.seller);
-        }
-      } catch (error) {
-        console.error("Error fetching sellers:", error);
-      }
-    };
+    dispatch(fetchSellers());
+  }, [dispatch]);
 
-    fetchSellers();
-  }, []);
+  useEffect(() => {
+    if (sellers && sellers.length > 0) { 
+      const formattedSellers = sellers.map((seller) => ({
+        id: seller.id,
+        name: seller.username,
+        email: seller.email,
+        shopName: seller.shopName,
+        accountId: seller.accountId,
+        role: seller.role,  
+      }));
+      setRows(formattedSellers  );
+    }
+  }, [sellers]);
 
-  const handleEdit = (row) => {
-    setEditableRow(row.id); // Set the ID of the row being edited
+  const handleEdit = (row) => {     
+    setEditableRow(row.id);
     setUpdatedFields({
       id: row.accountId,
-      name: row.name,
+      name: row.name, 
       email: row.email,
       shopName: row.shopName,
     });
@@ -50,19 +43,17 @@ export const SellerList = () => {
 
   const handleUpdate = async (id) => {
     try {
-      const response = await axios.put(
-        `http://localhost:3004/seller/update-seller`, // Remove id from query params
-        { ...updatedFields } // Send id and updated fields in request body
-      );
+      const response = await dispatch(updateSeller({ id, updatedFields })).unwrap();
       if (response.status === 200) {
         console.log("Seller updated successfully:", response.data);
+        setEditableRow(false)
 
         setRows((prevRows) =>
           prevRows.map((row) =>
             row.id === id ? { ...row, ...updatedFields } : row
           )
         );
-        setEditableRow(null); // Reset editable row
+        setEditableRow(null);
       }
     } catch (error) {
       console.error("Error updating seller:", error);
@@ -75,15 +66,12 @@ export const SellerList = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3004/seller/delete-sellers`,
-        { data: { id } } // Send the id in the request body
-      );
+      const response=await dispatch(deleteSeller(id))
 
       if (response.status === 200) {
         console.log("Seller deleted successfully:", response.data);
 
-        // Remove the deleted seller from the UI
+
         setRows((prevRows) => prevRows.filter((row) => row.id !== id));
       }
     } catch (error) {
@@ -192,6 +180,36 @@ export const SellerList = () => {
       ),
     },
   ];
+  if (loading) {
+    return (
+      <Typography
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "80px",
+        }}
+      >
+        Loading sellers...
+      </Typography>
+    );
+  }
+
+  if (error) {
+    return (
+      <Typography
+        color="error"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "80px",
+        }}
+      >
+        {error}
+      </Typography>
+    );
+  }
 
   return (
     <>
@@ -222,3 +240,4 @@ export const SellerList = () => {
     </>
   );
 };
+

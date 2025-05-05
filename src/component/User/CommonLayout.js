@@ -14,6 +14,22 @@ function CommonLayout({ children }) {
     );
     setCartItemCount(itemCount);
   };
+  // console.log(itemCount,"itemCount***********************************")
+
+  useEffect(() => {
+    updateCartItemCount(); 
+
+    // Listen for custom event
+    const handleCartUpdate = () => {
+      updateCartItemCount();
+    };
+
+    window.addEventListener("cartUpdated", handleCartUpdate);
+
+    return () => {
+      window.removeEventListener("cartUpdated", handleCartUpdate);
+    };
+  }, []);
 
   return (
     <>

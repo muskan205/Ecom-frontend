@@ -5,6 +5,8 @@ import {  useNavigate } from "react-router";
 import { BsArrowLeft } from "react-icons/bs";
 import CountdownTimer from "../Timer/Timer";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { verifyOtp } from "../../../redux/auth.slice";
 
 export const focusInput = (inputs, index) => {
   if (inputs[index]?.current) {
@@ -41,6 +43,8 @@ export const VerifyOtp=()=> {
   const TextFieldRef = [otpRef1, otpRef2, otpRef3, otpRef4];
   let otpArray = [otp1, otp2, otp3, otp4];
   otpArray = otp;
+
+  const dispatch=useDispatch()
   useEffect(() => {
     // Focus on the first input when the page loads
     focusInput(TextFieldRef, 0);
@@ -67,13 +71,7 @@ export const VerifyOtp=()=> {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:3004/api/verifyOtp",
-
-        // sending otp in body
-        { otp: otpValue }
-      );
-
+      const response = await dispatch(verifyOtp({otp:otpValue}))
       console.log(response.data.message);
       if (response.status === 200) {
         alert("OTP verified successfully");
@@ -101,10 +99,9 @@ export const VerifyOtp=()=> {
         return;
       }
 
-      // Make API call to resend OTP directly using the email from local storage
       const response = await axios.post(
         "http://localhost:3004/api/forgetPAssword",
-        { email: storedData } // directly use the email from local storage in the request body
+        { email: storedData } 
       );
 
       if (response.status === 200) {

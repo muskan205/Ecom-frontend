@@ -9,8 +9,21 @@ import { Box } from "@mui/material";
 
 export default function CustomCards({ height, data, isProduct }) {
   const handleAddToCart = (item) => {
-    console.log("Added to Cart: ", item);
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  
+    const existingItem = cart.find((i) => i.id === item.id);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({ ...item, quantity: 1 });
+    }
+  
+    localStorage.setItem("cart", JSON.stringify(cart));
+  
+    // 🔔 Dispatch event to notify CommonLayout
+    window.dispatchEvent(new Event("cartUpdated"));
   };
+  
 
   return (
     <Box

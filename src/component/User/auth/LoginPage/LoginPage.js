@@ -12,8 +12,10 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 
 import CommonSnackbar from "../../../common/Toaster/SuccessToaster";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../../redux/auth.slice";
 
-export const SignIn=()=> {
+export const SignIn = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({ email: "", password: "" });
   const [errors, setError] = useState({});
@@ -23,6 +25,8 @@ export const SignIn=()=> {
     message: "",
     severity: "success",
   });
+
+  const dispatch = useDispatch()
 
   const handleSnackbarClose = () => {
     setSnackbarState({ ...snackbarState, open: false });
@@ -34,7 +38,7 @@ export const SignIn=()=> {
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (user.email ==="") {
+    if (user.email === "") {
       isValid = false;
       errors.email = "email is required";
     }
@@ -59,12 +63,9 @@ export const SignIn=()=> {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:3004/api/login",
-        user
-      );
-      // console.log(response.data, "***********");
-      // console.log("respose***********", response.data.account.role);
+      const response = await dispatch(loginUser(user))
+
+
 
       if (response.status === 200) {
         setSnackbarState({
@@ -87,7 +88,7 @@ export const SignIn=()=> {
             navigate("/product");
           }, 1000);
         }
-        // Delay navigation to allow snackbar to display
+      
       }
     } catch (err) {
       setSnackbarState({
@@ -199,7 +200,7 @@ export const SignIn=()=> {
               <img src="google.png" alt="." width="30px" /> Log in with Google
             </button>
             <button className="social-button">
-              <img src="facebook.png" width="30px" alt=""/> Log in with Facebook
+              <img src="facebook.png" width="30px" alt="" /> Log in with Facebook
             </button>
             <button className="social-button">
               <img src="twitter.png" alt="." width="30px" /> Log in with Twitter

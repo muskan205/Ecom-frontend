@@ -11,11 +11,15 @@ import "./Signup.css";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../../redux/auth.slice";
 
 export const Signup=()=> {
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState({ username: "", email: "", password: "" });
   const [errors, setErrors] = useState({});
+
+  const dispatch=useDispatch()
 
   const navigate = useNavigate();
 
@@ -63,13 +67,10 @@ export const Signup=()=> {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:3004/api/register",
-        user
-      );
+      const response=await dispatch(registerUser(user)).unwrap( )
       if (response.status === 200) {
-        alert("User created successfully");
-        setUser({ username: "", email: "", password: "" });
+        alert("User created successfully"); 
+        setUser({ username: "", email: "", password: "" }); 
         navigate("/login");
         setErrors({});
       }
