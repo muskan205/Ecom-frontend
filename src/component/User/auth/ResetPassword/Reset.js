@@ -13,7 +13,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { MdOutlineLockReset } from "react-icons/md";
 import {  BsArrowLeft } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { updatePassword } from "../../../redux/auth.slice";
+import { updatePassword } from "../../../../redux/auth.slice";
 
 export const  Reset=() =>{
   const [data, setData] = useState({ password: "", confirmPassword: "" });

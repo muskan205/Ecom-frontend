@@ -6,7 +6,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import CountdownTimer from "../Timer/Timer";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { forgetPassword, verifyOtp } from "../../../redux/auth.slice";
+import { forgetPassword, verifyOtp } from "../../../../redux/auth.slice";
 
 export const focusInput = (inputs, index) => {
   if (inputs[index]?.current) {

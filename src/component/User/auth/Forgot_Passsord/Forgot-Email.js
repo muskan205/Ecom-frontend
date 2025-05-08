@@ -1,43 +1,44 @@
 import React, { useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { BsArrowLeft } from "react-icons/bs";
-import axios from "axios";
 import { useNavigate } from "react-router";
 
 import { MdOutlineFingerprint } from "react-icons/md";
 import "./Forgot-Email.css";
 import { useDispatch } from "react-redux";
-import { forgetPassword } from "../../../redux/auth.slice";
+import { forgetPassword } from '../../../../redux/auth.slice';
 
-export const ForgotPassword=()=> {
+export const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const dispatch =useDispatch()
+  const dispatch = useDispatch()
   const ResetPasswordEmail = async () => {
-  if (loading) return;
+    if (loading) return;
 
-  setLoading(true);
-  try {
-    const response = await dispatch(forgetPassword({ email })).unwrap();
+    setLoading(true);
+    try {
+      const response = await dispatch(forgetPassword({ email })).unwrap();
 
-    localStorage.setItem("data", JSON.stringify(response.user.email));
-    localStorage.setItem("id", JSON.stringify(response.user.id));
-    localStorage.setItem("user", JSON.stringify(response.user));
+      // localStorage.setItem("data", JSON.stringify(response.user.email));
+      // localStorage.setItem("id", JSON.stringify(response.user.id));
+      // localStorage.setItem("user", JSON.stringify(response.user));
+      if (response) {
+        setSuccessMessage("Email Verified");
+        setError("");
+        navigate("/verifyOtp", { state: { email: email } });
+      }
 
-    setSuccessMessage("Email Verified");
-    setError("");
-    navigate("/verifyOtp",{state:{email:email}});
-  } catch (err) {
-    console.error("Forget password error:", err);
-    setError(err.message || "Something went wrong. Please try again.");
-    setSuccessMessage("");
-  } finally {
-    setLoading(false);
-  }
-};
+    } catch (err) {
+      console.error("Forget password error:", err);
+      setError(err.message || "Something went wrong. Please try again.");
+      setSuccessMessage("");
+    } finally {
+      setLoading(false);
+    }
+  };
 
 
   const handleBackNavigation = () => {

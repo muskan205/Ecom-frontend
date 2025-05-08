@@ -3,14 +3,14 @@ import { Typography, Button, TextField } from "@mui/material";
 import axios from "axios";
 import { CommonDataGrid } from "../../../common/table";
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteSeller, fetchSellers, updateSeller } from './../../../redux/seller.slice'
+import { deleteSeller, fetchSellers, updateSeller } from '../../../../redux/seller.slice'
 
 export const SellerList = () => {
   const [rows, setRows] = useState([]);
   const [editableRow, setEditableRow] = useState(null);
   const [updatedFields, setUpdatedFields] = useState({});
   const dispatch = useDispatch();
-  const { sellers, loading, error } = useSelector((state) => state.sellers); // Corrected selector
+  const { sellers, loading, error } = useSelector((state) => state.sellers); 
   console.log("sellers from redux", sellers);
 
   useEffect(() => {

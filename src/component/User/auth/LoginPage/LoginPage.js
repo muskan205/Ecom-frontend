@@ -11,7 +11,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useNavigate } from "react-router";
 import CommonSnackbar from "../../../common/Toaster/SuccessToaster";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../../../redux/auth.slice";
+import { loginUser } from "../../../../redux/auth.slice";
 
 export const SignIn = () => {
   const navigate = useNavigate();
@@ -79,7 +79,7 @@ export const SignIn = () => {
         } else if (role === "seller") {
           navigate("/seller-dashboard");
         } else if (role === "user") {
-          setTimeout(() => navigate("/product"), 0);
+          setTimeout(() => navigate("/all-products"), 0);
         }
 
       }
@@ -192,12 +192,12 @@ export const SignIn = () => {
             <button className="social-button">
               <img src="google.png" alt="." width="30px" /> Log in with Google
             </button>
-            <button className="social-button">
+            {/* <button className="social-button">
               <img src="facebook.png" width="30px" alt="" /> Log in with Facebook
             </button>
             <button className="social-button">
               <img src="twitter.png" alt="." width="30px" /> Log in with Twitter
-            </button>
+            </button> */} 
           </Box>
         </div>
       </div>

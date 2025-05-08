@@ -12,7 +12,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../../redux/auth.slice";
+import { registerUser } from "../../../../redux/auth.slice";
 
 export const Signup=()=> {
   const [showPassword, setShowPassword] = useState(false);
