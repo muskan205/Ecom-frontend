@@ -1,44 +1,40 @@
-import React from "react";
-import axios from "axios";
-import { useState } from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Box, Typography } from "@mui/material";
 import CommonForm from "../../common/form";
 import CommonSnackbar from "../../../common/Toaster/SuccessToaster";
+import { createCategory } from "../../../../redux/seller.slice";
 
 export const AddCategory = () => {
-    const [snackbarState, setSnackbarState] = useState({
-        open: false,
-        message: "",
-        severity: "success",
-      });
-    
-      const handleSnackbarClose = () => {
-        setSnackbarState({ ...snackbarState, open: false });
-      };
-  
+  const [snackbarState, setSnackbarState] = useState({
+    open: false,
+    message: "",
+    severity: "success",
+  });
+
+  const dispatch = useDispatch();
+
+  const handleSnackbarClose = () => {
+    setSnackbarState({ ...snackbarState, open: false });
+  };
+
   const handleCategorySubmit = async (formValues) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3004/shop/create-category",
-        formValues
-      );
-      if (response.status === 200) {
-        alert("Category created successfully");
+      const response = await dispatch(createCategory(formValues));
+      if (response.payload?.code === 201) {
         setSnackbarState({
           open: true,
-          message: "Deleted successfuly",
+          message: "Category created successfully",
           severity: "success",
         });
-        <CommonSnackbar
-        open={snackbarState.open}
-        message={snackbarState.message}
-        severity={snackbarState.severity}
-        onClose={handleSnackbarClose}
-      />
       }
     } catch (error) {
       console.error("Error creating category", error);
-      alert("Error creating category");
+      setSnackbarState({
+        open: true,
+        message: "Error creating category",
+        severity: "error",
+      });
     }
   };
 
@@ -61,6 +57,13 @@ export const AddCategory = () => {
         entityType="category"
         formData={{}}
         onSubmit={handleCategorySubmit}
+      />
+
+      <CommonSnackbar
+        open={snackbarState.open}
+        message={snackbarState.message}
+        severity={snackbarState.severity}
+        onClose={handleSnackbarClose}
       />
     </Box>
   );

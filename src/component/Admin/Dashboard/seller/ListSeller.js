@@ -3,7 +3,7 @@ import { Typography, Button, TextField } from "@mui/material";
 import axios from "axios";
 import { CommonDataGrid } from "../../../common/table";
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteSeller, fetchSellers, updateSeller } from '../../../../redux/seller.slice'
+import { deleteSeller, fetchSellers, updateSeller } from '../../../../redux/admin.slice'
 
 export const SellerList = () => {
   const [rows, setRows] = useState([]);

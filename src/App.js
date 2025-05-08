@@ -110,14 +110,8 @@ const router = createBrowserRouter([
       </CommonLayout>
     ),
   },
-  {
-    path: "/product",
-    element: (
-      <CommonLayout>
-        <ProductCards />
-      </CommonLayout>
-    ),
-  },
+  
+  
 
   // Admin Routes (Protected)
   {

@@ -92,7 +92,7 @@ const authSlice = createSlice({
   initialState: {
     loading: false,
     error: null,
-    user: null,
+    user: JSON.parse(localStorage.getItem('user')) || null,
   },
   reducers: {
     logout: (state) => {
@@ -125,6 +125,8 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
         state.user = action.payload;
+        localStorage.setItem('token', action.payload.token); 
+        localStorage.setItem('user', JSON.stringify(action.payload)); 
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
