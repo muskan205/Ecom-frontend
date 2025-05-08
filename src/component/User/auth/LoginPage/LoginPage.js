@@ -8,11 +8,9 @@ import {
 } from "@mui/material";
 import { CgProfile } from "react-icons/cg";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import axios from "axios";
 import { useNavigate } from "react-router";
-
 import CommonSnackbar from "../../../common/Toaster/SuccessToaster";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../../redux/auth.slice";
 
 export const SignIn = () => {
@@ -63,32 +61,27 @@ export const SignIn = () => {
     }
 
     try {
+  
       const response = await dispatch(loginUser(user))
 
-
-
-      if (response.status === 200) {
+      if (response.payload.status === 200) {
         setSnackbarState({
           open: true,
           message: "Logged in successfully!",
           severity: "success",
         });
 
-        localStorage.setItem("user", JSON.stringify(response.data));
 
-        if (response.data.account.role === "admin") {
+        const role = response?.payload?.account?.role;
+
+        if (role === "admin") {
           navigate("/admin-dashboard");
-        }
-        else if (response.data.account.role === "seller") {
+        } else if (role === "seller") {
           navigate("/seller-dashboard");
+        } else if (role === "user") {
+          setTimeout(() => navigate("/product"), 0);
         }
-        setUser({ email: "", password: "" });
-        if (response.data.role === "user") {
-          setTimeout(() => {
-            navigate("/product");
-          }, 1000);
-        }
-      
+
       }
     } catch (err) {
       setSnackbarState({

@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { IoMailOpenOutline } from "react-icons/io5";
-import {  useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { BsArrowLeft } from "react-icons/bs";
 import CountdownTimer from "../Timer/Timer";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { verifyOtp } from "../../../redux/auth.slice";
+import { useDispatch, useSelector } from "react-redux";
+import { forgetPassword, verifyOtp } from "../../../redux/auth.slice";
 
 export const focusInput = (inputs, index) => {
   if (inputs[index]?.current) {
@@ -28,7 +28,7 @@ export const handleKeyDown = (inputs, index, e) => {
   }
 };
 
-export const VerifyOtp=()=> {
+export const VerifyOtp = () => {
   const [otp1, setOtp1] = useState();
   const [otp2, setOtp2] = useState();
   const [otp3, setOtp3] = useState();
@@ -44,9 +44,11 @@ export const VerifyOtp=()=> {
   let otpArray = [otp1, otp2, otp3, otp4];
   otpArray = otp;
 
-  const dispatch=useDispatch()
+  const dispatch = useDispatch()
+
+  const data = useLocation()
+  const email = data.state?.email
   useEffect(() => {
-    // Focus on the first input when the page loads
     focusInput(TextFieldRef, 0);
   }, []);
 
@@ -55,14 +57,13 @@ export const VerifyOtp=()=> {
     if (value && index < TextFieldRef.length - 1) {
       focusInput(TextFieldRef, index + 1);
     }
-    // otpArray[index].(e.target.value)
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
   };
 
   const handleSubmit = async (e) => {
-    // Combine the OTP values into a single string
+
     const otpValue = otp.join("");
 
     if (otpValue.length !== 4) {
@@ -71,12 +72,11 @@ export const VerifyOtp=()=> {
     }
 
     try {
-      const response = await dispatch(verifyOtp({otp:otpValue}))
-      console.log(response.data.message);
+      const response = await dispatch(verifyOtp({ otp: otpValue }))
       if (response.status === 200) {
         alert("OTP verified successfully");
         console.log(response.data);
-        navigate("/reset-password");
+        navigate("/reset-password",{state:{email:email}});
       }
     } catch (err) {
       console.log("Error", err.response?.data || err.message);
@@ -85,28 +85,14 @@ export const VerifyOtp=()=> {
   };
 
   const handleResendOtp = async () => {
-    debugger;
+
     try {
-      // Retrieve user data from localStorage
-      const storedData = JSON.parse(localStorage.getItem("data"));
-      const email = storedData?.email; // Extract email
 
-      console.log("Email:", email);
-      console.log("Stored Data:", storedData);
+      const response = await dispatch(forgetPassword({ email })).unwrap()
 
-      if (!storedData) {
-        alert("User data not found. Please try again.");
-        return;
-      }
-
-      const response = await axios.post(
-        "http://localhost:3004/api/forgetPAssword",
-        { email: storedData } 
-      );
-
-      if (response.status === 200) {
+      if (response.user.code === 201) {
         alert("OTP sent successfully");
-        // navigate("/reset-password");
+        navigate("/reset-password");
       }
     } catch (err) {
       console.error("Error:", err.response?.data?.message || err.message);
@@ -163,9 +149,9 @@ export const VerifyOtp=()=> {
               sx={{
                 width: "50px",
                 "& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button":
-                  {
-                    display: "none",
-                  },
+                {
+                  display: "none",
+                },
                 "& input[type=number]": {
                   MozAppearance: "textfield",
                 },

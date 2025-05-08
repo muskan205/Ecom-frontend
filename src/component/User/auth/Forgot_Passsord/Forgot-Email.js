@@ -15,8 +15,8 @@ export const ForgotPassword=()=> {
   const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-const dispatch =useDispatch()
-const ResetPasswordEmail = async () => {
+  const dispatch =useDispatch()
+  const ResetPasswordEmail = async () => {
   if (loading) return;
 
   setLoading(true);
@@ -29,7 +29,7 @@ const ResetPasswordEmail = async () => {
 
     setSuccessMessage("Email Verified");
     setError("");
-    navigate("/verifyOtp");
+    navigate("/verifyOtp",{state:{email:email}});
   } catch (err) {
     console.error("Forget password error:", err);
     setError(err.message || "Something went wrong. Please try again.");

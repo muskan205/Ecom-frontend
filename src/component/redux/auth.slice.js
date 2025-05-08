@@ -49,7 +49,7 @@ export const forgetPassword = createAsyncThunk(
       return rejectWithValue({ message: 'Something went wrong' });
     }
   }
-);
+);  
 
 export const verifyOtp= createAsyncThunk(
     'auth/verifyOtp',
@@ -65,6 +65,26 @@ export const verifyOtp= createAsyncThunk(
       }
     }
   );
+
+  export const updatePassword = createAsyncThunk(
+    'auth/updatePassword', 
+    async (userData, { rejectWithValue }) => {
+      try {
+        const response = await axios.post('http://localhost:3004/api/resetpassword', userData, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          },
+        });
+        return response.data;
+      } catch (err) {
+        if (err.response && err.response.data) {
+          return rejectWithValue(err.response.data);
+        }
+        return rejectWithValue({ message: 'Something went wrong' });
+      }
+    }
+  );
+  
   
 // Slice
 const authSlice = createSlice({
@@ -135,7 +155,22 @@ const authSlice = createSlice({
       .addCase(verifyOtp.rejected, (state, action) => {  // Corrected to verifyOtp
         state.loading = false;
         state.error = action.payload;
-      });
+      })
+      
+      // Login
+      .addCase(updatePassword.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(updatePassword.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(updatePassword.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+;
   },
 });
 

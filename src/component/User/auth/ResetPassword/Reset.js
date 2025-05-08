@@ -7,11 +7,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { MdOutlineLockReset } from "react-icons/md";
 import {  BsArrowLeft } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { updatePassword } from "../../../redux/auth.slice";
 
 export const  Reset=() =>{
   const [data, setData] = useState({ password: "", confirmPassword: "" });
@@ -20,8 +22,11 @@ export const  Reset=() =>{
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [id, setId] = useState(localStorage.getItem("userId"));
 
+  const dispatch=useDispatch()
+ 
+const datafromUrl=useLocation()
+const email=datafromUrl.state?.email
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -30,33 +35,24 @@ export const  Reset=() =>{
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  const resetPassword = async () => {
+  const handleReset = () => {
     if (password !== confirmPassword) {
       alert("New password and confirm password do not match");
       return;
     }
-
-    try {
-      const response = await axios.post(
-        "http://localhost:3004/api/resetpassword",
-        { id, password, confirmPassword },
-        {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-          },
-        }
-      );
-
-      if (response.status === 200) {
+  
+    dispatch(updatePassword({ email, password, confirmPassword }))
+      .unwrap()
+      .then(() => {
         alert("Password changed successfully");
         setData({ password: "", confirmPassword: "" });
         navigate("/login");
-      }
-    } catch (err) {
-      console.error("Error:", err.response ? err.response.data.message : "Something went wrong");
-      alert("Something went wrong with password change");
-    }
+      })
+      .catch((error) => {
+        alert(error.message || "Something went wrong");
+      });
   };
+  
 
   return (
     <div className="forgot-password-container">
@@ -132,7 +128,7 @@ export const  Reset=() =>{
         />
 
         <Button
-          onClick={resetPassword}
+          onClick={handleReset}
           variant="contained"
           sx={{
             backgroundColor: "#4F62FE",
