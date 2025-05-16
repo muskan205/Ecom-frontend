@@ -105,7 +105,7 @@ export const SellerHeader = () => {
       ],
     },
     {
-      title: "Category", // Add more menus as needed
+      title: "Category", 
       icon:  <CategoryIcon />,
       items: [
         { text: "Create Category", onClick: () => navigate("/create-category") },
@@ -113,7 +113,7 @@ export const SellerHeader = () => {
       ],
     },
     {
-      title: "Products", // Add more menus as needed
+      title: "Products", 
       icon: <ProductionQuantityLimitsOutlined />,
       items: [
         { text: "Create Products", onClick: () => navigate("/create-product") },

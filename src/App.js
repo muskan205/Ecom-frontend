@@ -38,7 +38,7 @@ import {
 } from "./component/Seller/Dashboard";
 
 import { HomeLayout } from "./component/User/HomePage";
-import ProductCards from "./component/User/common/Card/productsCard";
+// import ProductCards from "./component/User/common/Card/productsCard";
 
 const router = createBrowserRouter([
   // User Routes

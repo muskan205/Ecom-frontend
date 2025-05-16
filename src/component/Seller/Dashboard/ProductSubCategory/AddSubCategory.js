@@ -1,54 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
-import axios from "axios";
 import CommonForm from "../../common/form"; // Import the CommonForm
+import { useDispatch, useSelector } from "react-redux";
+import { createSubCategory, fetchCategories } from "../../../../redux/seller.slice";
 
 export const AddSubCategory = () => {
   const [user, setUser] = useState({
     categoryId: "",
     subCategoryName: "",
   });
+  const dispatch = useDispatch()
 
-  const [categories, setCategories] = useState([]);
+  const categories = useSelector((state) => state.retailer.categories);
 
-  // Fetch categories from API
   useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await axios.get("http://localhost:3004/shop/get-category");
-        if (response.status === 200) {
-          setCategories(response.data.result.shops); 
-        }
-      } catch (error) {
-        console.error("Error fetching categories", error);
-      }
-    };
-    fetchCategories();
-  }, []);
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
-  // Handle form submission
   const handleSubmit = async (formData) => {
-    console.log("Submitting Data:", formData); // Debugging log
     try {
-      const response = await axios.post(
-        "http://localhost:3004/shop/create-subCategory",
-        {
-          categoryId: formData.categoryId,
-          subCategoryName: formData.subCategoryName,
-        }
-      );
-
-      console.log("Response Data:", response.data); // Debugging log
-
-      if (response.status === 200) {
-        setUser({
-          categoryId: "",
-          subCategoryName: "",
-        });
-      }
+      await dispatch(createSubCategory(formData)).unwrap();
+      setUser({ categoryId: "", subCategoryName: "" });
     } catch (error) {
-      console.error("Error creating subCategory:", error.response?.data || error);
-      alert(`Error: ${error.response?.data?.message || "Something went wrong"}`);
+      alert(`Error: ${error.message || "Something went wrong"}`);
     }
   };
 

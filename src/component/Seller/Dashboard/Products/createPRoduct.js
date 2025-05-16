@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import CommonForm from "../../common/form";
 import { Box, Typography } from "@mui/material";
 import axios from "axios";
-import { useFetchCategories } from "../../serivces/api.service";
+// import { useFetchCategories } from "../../serivces/api.service";
 export const AddProduct = () => {
   const [productFormData, setProductFormData] = useState({});
   // const [categories, setCategories] = useState([]);
   const [shops, setShops] = useState([]);
   const [subcategory, setSubCategory] = useState([]);
   const [rows, setRows] = useState([]);
-const {categories,error,loading}=useFetchCategories()
+// const {categories,error,loading}=useFetchCategories()
   // const fetchCategories = async () => {
   //   try {
   //     const response = await axios.get(
@@ -98,7 +98,7 @@ const {categories,error,loading}=useFetchCategories()
         entityType="product"
         // formData={productFormData}
         // onSubmit={handleProductSubmit}
-        categories={categories}
+        categories={"categories"}
         subcategory={subcategory}
         shops={shops}
       />

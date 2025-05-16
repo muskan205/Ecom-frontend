@@ -21,8 +21,8 @@ export const SellerList = () => {
     if (sellers && sellers.length > 0) { 
       const formattedSellers = sellers.map((seller) => ({
         id: seller.id,
-        name: seller.username,
         email: seller.email,
+       username:seller.username,
         shopName: seller.shopName,
         accountId: seller.accountId,
         role: seller.role,  
@@ -35,7 +35,7 @@ export const SellerList = () => {
     setEditableRow(row.id);
     setUpdatedFields({
       id: row.accountId,
-      name: row.name, 
+      username: row.username, 
       email: row.email,
       shopName: row.shopName,
     });
@@ -81,15 +81,15 @@ export const SellerList = () => {
 
   const columns = [
     {
-      field: "name",
-      headerName: "Name",
+      field: "username",
+      headerName: "username",
       width: 150,
       renderCell: (params) =>
         editableRow === params.row.id ? (
           <TextField
             size="small"
-            value={updatedFields.name || ""}
-            onChange={(e) => handleFieldChange("name", e.target.value)}
+            value={updatedFields.username || ""}
+            onChange={(e) => handleFieldChange("username", e.target.value)}
           />
         ) : (
           params.value

@@ -1,14 +1,14 @@
-import React from "react";
-import { SellerHeader } from "../Dashboard";
+// import React from "react";
+// import { SellerHeader } from "../Dashboard";
 
 
-function SellerLayout() {
-  return (
-    <>
+// function SellerLayout() {
+//   return (
+//     <>
     
-      <SellerHeader/>
-    </>
-  );
-}
+//       <SellerHeader/>
+//     </>
+//   );
+// }
 
-export default SellerLayout;
+// export default SellerLayout;

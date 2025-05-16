@@ -11,8 +11,9 @@ import {
 import { FORM_FEILDS } from "./../../Seller/constants/form.field"; // Import form fields
 
 const CommonForm = ({ entityType, formData, onSubmit, categories,subcategory }) => {
+  debugger
   const [formValues, setFormValues] = useState(formData || {});
-
+console.log(categories,"********FORM***")
   useEffect(() => {
     if (formData) setFormValues(formData);
   }, [formData]);
@@ -27,11 +28,11 @@ const CommonForm = ({ entityType, formData, onSubmit, categories,subcategory }) 
     const { name, type } = e.target;
 
     if (type === "file") {
-      const file = e.target.files[0]; // Get the selected file
+      const file = e.target.files[0]; 
       console.log("file", file);
       setFormValues((prevValues) => ({
         ...prevValues,
-        [name]: file, // Store file object, not just the name
+        [name]: file, 
       }));
     } else {
       const { value } = e.target;
@@ -66,8 +67,9 @@ const CommonForm = ({ entityType, formData, onSubmit, categories,subcategory }) 
                 onChange={handleChange}
               >
                 {categories?.map((category) => (
+                
                   <MenuItem key={category.id} value={category.id}>
-                    {category.categoryName}
+                    {category.CategoryName}
                   </MenuItem>
                 ))}
               </Select>
